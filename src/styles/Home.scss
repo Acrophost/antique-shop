@@ -1,0 +1,19 @@
+.home {
+    background: url(../svgs/home-background.svg);
+    width: 100vw;
+    height: 115vh;
+    background-size: calc(100vw + 8rem);
+    background-position: -4rem -13rem;
+}
+
+.home__title-container {
+    position: absolute;
+    text-align: right;
+    width: 60rem;
+    left: 30rem;
+    top: -5rem;
+}
+
+.home__title {
+    font-size: 10rem;
+}

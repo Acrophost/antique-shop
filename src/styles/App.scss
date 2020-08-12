@@ -3,3 +3,11 @@
 *:after {
     box-sizing: border-box;
 }
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+@import './NavBar';
+@import './Home';
