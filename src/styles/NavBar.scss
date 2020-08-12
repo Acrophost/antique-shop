@@ -1,0 +1,47 @@
+.nav-bar {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+}
+
+.nav__menu-button {
+    position: relative;
+    border: none;
+    outline: none;
+    background-color: black;
+    color: white;
+    width: 14rem;
+    height: 4rem;
+    font-size: 2.5rem;
+    text-align: left;
+    padding-left: 2rem;
+    overflow: hidden;
+}
+
+.nav__hamburger-menu {
+    position: absolute;
+    background-color: white;
+    content: '';
+    width: 3rem;
+    height: 0.3rem;
+    right: 1rem;
+    top: 1rem;
+
+    &::before,
+    &::after {
+        position: absolute;
+        background-color: white;
+        content: '';
+        width: 3rem;
+        height: 0.3rem;
+    }
+
+    &::before {
+        top: 0.8rem;
+    }
+
+    &::after {
+        top: 1.6rem;
+        height: 0.35rem;
+    }
+}
