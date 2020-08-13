@@ -1,3 +1,5 @@
+@import './Variables';
+
 *,
 *:before,
 *:after {
@@ -7,6 +9,34 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: $base-white;
+    color: $primary-color;
+}
+
+html {
+    @media (min-width: 2301px) {
+        font-size: 20px;
+    }
+
+    @media (max-width: 2300px) {
+        font-size: 16px;
+    }
+
+    @media (max-width: 1700px) {
+        font-size: 13px;
+    }
+
+    @media (max-width: 1275px) {
+        font-size: 11px;
+    }
+
+    @media (max-width: 955px) {
+        font-size: 7px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 5px;
+    }
 }
 
 @import './NavBar';
