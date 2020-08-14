@@ -7,7 +7,9 @@ const Home = (): ReactElement => (
             <svg className="home__accent-line" height="100" width="700">
                 <line x1="0" y1="0" x2="800" y2="0" />
             </svg>
-            <h1 className="home__title">The Antique House</h1>
+            <h1 className="home__title">
+                The Antique <span>House</span>
+            </h1>
         </div>
         <HomeBackground className="home__background-furniture" />
     </div>

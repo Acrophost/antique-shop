@@ -1,7 +1,8 @@
 .nav-bar {
     position: fixed;
-    top: 1rem;
-    left: 1rem;
+    padding: 1rem;
+    width: 100%;
+    z-index: 5;
 }
 
 .nav__menu-button {
@@ -44,4 +45,24 @@
         top: 1.6rem;
         height: 0.35rem;
     }
+}
+
+.nav__logo-container {
+    position: absolute;
+    border: none;
+    outline: none;
+    background-color: $base-black;
+    width: 4rem;
+    height: 4rem;
+    margin-left: 2rem;
+    right: 1rem;
+}
+
+.nav__logo {
+    position: relative;
+    width: 2.5rem;
+}
+
+.nav__cls-2 {
+    fill: $accent;
 }
