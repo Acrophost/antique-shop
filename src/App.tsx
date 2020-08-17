@@ -10,9 +10,11 @@ import Gallery from './components/Gallery';
 import Contact from './components/Contact';
 
 function App(): ReactElement {
+    const location = '/';
+
     return (
         <div className="App">
-            <NavBar />
+            <NavBar location={location} />
             <Home />
             <About />
             <Sales />

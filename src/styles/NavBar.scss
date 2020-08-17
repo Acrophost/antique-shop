@@ -5,19 +5,138 @@
     z-index: 5;
 }
 
+.nav__sidebar {
+    position: fixed;
+    display: none;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    top: 0;
+    left: 0;
+    padding-top: 6rem;
+    width: 30rem;
+    height: 100%;
+    background: linear-gradient(scale-color($base-black, $alpha: -30%), scale-color($deeper-accent, $alpha: -70%));
+
+    &.open {
+        display: flex;
+    }
+
+    @media (max-width: 1025px) and (min-height: 1365px) {
+        width: 60rem;
+        padding-top: 11rem;
+    }
+
+    @media (max-width: 800px) {
+        padding-top: 11rem;
+        width: 60rem;
+    }
+
+    @media (max-width: 600px) {
+        width: 100vw;
+        background: linear-gradient(scale-color($base-black, $alpha: -10%), scale-color($deeper-accent, $alpha: -50%));
+    }
+}
+
+.nav__sidebar-button {
+    position: relative;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: none;
+    overflow: hidden;
+    margin: 0;
+    font-size: 2rem;
+    padding: 1rem;
+    width: 100%;
+    color: $base-white;
+    border-bottom: 1px solid scale-color($base-black, $alpha: -70%);
+
+    &:first-of-type {
+        border-top: 1px solid scale-color($base-black, $alpha: -70%);
+    }
+
+    &.active {
+        color: $accent;
+    }
+
+    &:before {
+        content: attr(data-content);
+        overflow: hidden;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        left: 0;
+        top: 1rem;
+        width: 100%;
+        height: 100%;
+        color: scale-color($primary-color, $lightness: 50%);
+        clip-path: circle(0 at 0 33%);
+        transition: clip-path 2s;
+    }
+
+    &.active:before {
+        color: scale-color($deeper-accent, $saturation: -10%, $lightness: 30%);
+    }
+
+    &:hover {
+        &:before {
+            clip-path: circle(130% at 0 33%);
+        }
+    }
+
+    @media (max-width: 1025px) and (min-height: 1365px) {
+        font-size: 4rem;
+        padding: 2rem 4rem;
+    }
+
+    @media (max-width: 800px) {
+        font-size: 4rem;
+        padding: 2rem;
+    }
+
+    @media (max-width: 600px) {
+        font-size: 5rem;
+        padding: 2rem 4rem;
+    }
+}
+
+.nav__menu-text {
+    transition: opacity 0.5s;
+}
+
 .nav__menu-button {
     position: relative;
     border: none;
     outline: none;
     cursor: pointer;
-    background-color: $base-black;
+    background: scale-color($base-black, $alpha: -30%);
     color: $base-white;
     width: 14rem;
+    left: 0;
     height: 4rem;
     font-size: 2.5rem;
     text-align: left;
     padding-left: 2rem;
     overflow: hidden;
+    transition: all 1s;
+
+    &.open {
+        width: 5rem;
+        background: none;
+        left: 23rem;
+        & > .nav__menu-text {
+            opacity: 0;
+        }
+
+        @media (max-width: 1025px) and (min-height: 1365px), (max-width: 800px) {
+            left: 48rem;
+            width: 8rem;
+        }
+
+        @media (max-width: 600px) {
+            left: 2rem;
+        }
+    }
 
     @media (max-width: 800px), (max-width: 1025px) and (min-height: 1365px) {
         width: 24rem;
@@ -34,6 +153,7 @@
     height: 0.3rem;
     right: 1rem;
     top: 1rem;
+    border-radius: 1rem;
 
     &::before,
     &::after {
@@ -42,6 +162,7 @@
         content: '';
         width: 3rem;
         height: 0.3rem;
+        border-radius: 1rem;
     }
 
     &::before {
@@ -79,7 +200,7 @@
     border: none;
     outline: none;
     cursor: pointer;
-    background-color: $base-black;
+    background-color: scale-color($base-black, $alpha: -30%);
     width: 4rem;
     height: 4rem;
     margin-left: 2rem;
