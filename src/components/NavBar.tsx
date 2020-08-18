@@ -30,13 +30,15 @@ class NavBar extends Component<LocationProps> {
         if (this.state.menuClass === 'nav__menu-button') {
             this.setState({ menuClass: 'nav__menu-button open', sidebarClass: 'nav__sidebar open' });
         } else {
-            this.setState({ menuClass: 'nav__menu-button', sidebarClass: 'nav__sidebar' });
+            this.setState({ menuClass: 'nav__menu-button', sidebarClass: 'nav__sidebar open closing' });
+            setTimeout(() => {
+                this.setState({ menuClass: 'nav__menu-button', sidebarClass: 'nav__sidebar' });
+            }, 1500);
         }
     }
 
-    didComponentMount(): void {
-        const sidebarButtons = document.getElementsByClassName('nav__sidebar-button');
-
+    componentDidMount(): void {
+        const sidebarButtons = document.getElementsByClassName('nav__sidebar-text');
         for (let i = 0; i < sidebarButtons.length; i++) {
             if (i === this.state.active) sidebarButtons[i].classList.add('active');
             else sidebarButtons[i].classList.remove('active');
@@ -46,23 +48,33 @@ class NavBar extends Component<LocationProps> {
     render(): ReactElement {
         return (
             <header className="nav-bar">
-                <div className={this.state.sidebarClass}>
-                    <button className="nav__sidebar-button" data-content="Home">
-                        Home
-                    </button>
-                    <button className="nav__sidebar-button" data-content="What do we do?">
-                        What do we do?
-                    </button>
-                    <button className="nav__sidebar-button" data-content="Current discounts">
-                        Current discounts
-                    </button>
-                    <button className="nav__sidebar-button" data-content="Our antiques">
-                        Our antiques
-                    </button>
-                    <button className="nav__sidebar-button" data-content="How to get in touch with us?">
-                        How to get in touch with us?
-                    </button>
-                </div>
+                <ul className={this.state.sidebarClass}>
+                    <li className="nav__sidebar-button">
+                        <a className="nav__sidebar-text" data-content="Home" href="/">
+                            Home
+                        </a>
+                    </li>
+                    <li className="nav__sidebar-button">
+                        <a className="nav__sidebar-text" data-content="What do we do?" href="about">
+                            What do we do?
+                        </a>
+                    </li>
+                    <li className="nav__sidebar-button">
+                        <a className="nav__sidebar-text" data-content="Current discounts" href="sales">
+                            Current discounts
+                        </a>
+                    </li>
+                    <li className="nav__sidebar-button">
+                        <a className="nav__sidebar-text" data-content="Our antiques" href="gallery">
+                            Our antiques
+                        </a>
+                    </li>
+                    <li className="nav__sidebar-button">
+                        <a className="nav__sidebar-text" data-content="How to get in touch with us?" href="contact">
+                            How to get in touch with us?
+                        </a>
+                    </li>
+                </ul>
                 <button className={this.state.menuClass} onClick={this.openSidebar}>
                     <div className="nav__menu-text">Menu</div>
                     <div className="nav__hamburger-menu"></div>

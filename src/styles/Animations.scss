@@ -1,0 +1,37 @@
+@keyframes open-sidebar {
+    from {
+        opacity: 0;
+        width: 0;
+    }
+}
+
+@keyframes close-sidebar {
+    to {
+        opacity: 0;
+        width: 0;
+    }
+}
+
+@keyframes hide-text {
+    to {
+        transform: translateY(-4rem);
+        opacity: 0;
+    }
+
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes show-text {
+    from {
+        transform: translateY(-4rem);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
