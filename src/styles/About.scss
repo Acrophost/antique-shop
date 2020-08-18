@@ -1,37 +1,124 @@
 .about {
+    position: relative;
     min-height: 100vh;
     background: $base-black;
     display: flex;
+    margin-top: -5rem;
+
+    @media (max-width: 1025px) and (min-height: 1365px), (max-width: 800px) {
+        margin-top: -10rem;
+        flex-flow: column nowrap;
+    }
+
+    @media (max-width: 600px) {
+        padding: 10rem 0;
+    }
+
+    @media (max-width: 480px) {
+        min-height: 125vh;
+    }
 }
 
 .about__title-container {
     width: 45vw;
-    margin: 3rem 3rem;
-    padding-left: 8rem;
+    margin: 6rem 3rem;
     background: $deeper-accent;
     border-radius: 1rem;
+    height: 90vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    @media (max-width: 1025px) and (min-height: 1365px), (max-width: 800px) {
+        width: 90vw;
+        height: 45vw;
+        margin: 3rem;
+    }
+
+    @media (max-width: 600px) {
+        height: 55vw;
+        padding-top: 8rem;
+    }
 }
 
 .about__title {
-    margin-top: 40vh;
     font-size: 5rem;
     color: $base-white;
+
+    @media (max-width: 1025px) {
+        font-size: 4rem;
+    }
+
+    @media (max-width: 1025px) and (min-height: 1365px), (max-width: 800px) {
+        font-size: 7rem;
+    }
+
+    @media (max-width: 600px) {
+        font-size: 6rem;
+    }
+
+    @media (max-width: 280px) {
+        font-size: 5rem;
+    }
 }
 
 .about__accent-line {
     margin-top: -3rem;
-    padding-left: 9rem;
-    width: 40rem;
+    margin-left: 12rem;
+    width: 30rem;
     & > line {
         stroke: $accent;
         stroke-width: 10;
     }
+
+    @media (max-width: 1025px) {
+        width: 25rem;
+    }
+
+    @media (max-width: 1025px) and (min-height: 1365px), (max-width: 800px) {
+        margin-top: -5rem;
+        width: 40rem;
+        margin-left: 20rem;
+    }
+
+    @media (max-width: 600px) {
+        & > line {
+            stroke-width: 6;
+        }
+    }
+
+    @media (max-width: 280px) {
+        width: 30rem;
+        margin-left: 11rem;
+    }
 }
 
 .about__text-container {
+    align-self: center;
     width: 45vw;
-    margin-top: 8rem;
     padding: 4rem;
     font-size: 2rem;
     color: scale-color($base-white, $alpha: -20%);
+
+    @media (max-width: 1025px) and (min-height: 1365px), (max-width: 800px) {
+        width: 90vw;
+        height: 45vw;
+        font-size: 3.2rem;
+    }
+
+    @media (max-width: 800px) {
+        font-size: 4rem;
+    }
+
+    @media (max-width: 600px) {
+        font-size: 3.5rem;
+    }
+
+    @media (max-width: 400px) {
+        font-size: 3rem;
+    }
+
+    @media (max-width: 320px) {
+        font-size: 2.7rem;
+    }
 }
