@@ -1,8 +1,9 @@
 .home {
-    background: linear-gradient(#00000000 90%, $base-black 90%), url(../images/home-bg2.jfif);
+    background: url(../images/home-bg2.jfif);
     width: 100vw;
     height: 105vh;
     background-size: 100vw;
+    background-attachment: fixed;
     overflow: hidden;
 
     @media (max-width: 800px), (max-width: 1025px) and (min-height: 768px), (max-width: 480px) {
@@ -163,7 +164,7 @@
     }
 
     @media (max-width: 1025px) and (min-height: 1365px) {
-        margin-top: -7rem;
+        margin-top: -2rem;
         width: 200vw;
     }
 
@@ -182,7 +183,7 @@
     }
 
     @media (max-width: 480px) {
-        margin-top: 20rem;
+        margin-top: 25rem;
     }
 
     @media (max-width: 480px) and (max-height: 601px) {
