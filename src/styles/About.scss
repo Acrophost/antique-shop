@@ -1,0 +1,37 @@
+.about {
+    min-height: 100vh;
+    background: $base-black;
+    display: flex;
+}
+
+.about__title-container {
+    width: 45vw;
+    margin: 3rem 3rem;
+    padding-left: 8rem;
+    background: $deeper-accent;
+    border-radius: 1rem;
+}
+
+.about__title {
+    margin-top: 40vh;
+    font-size: 5rem;
+    color: $base-white;
+}
+
+.about__accent-line {
+    margin-top: -3rem;
+    padding-left: 9rem;
+    width: 40rem;
+    & > line {
+        stroke: $accent;
+        stroke-width: 10;
+    }
+}
+
+.about__text-container {
+    width: 45vw;
+    margin-top: 8rem;
+    padding: 4rem;
+    font-size: 2rem;
+    color: scale-color($base-white, $alpha: -20%);
+}
