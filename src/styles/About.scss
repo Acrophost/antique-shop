@@ -4,6 +4,7 @@
     background: $base-black;
     display: flex;
     margin-top: -5rem;
+    margin-bottom: 0;
 
     @media (max-width: 1025px) and (min-height: 1365px), (max-width: 800px) {
         margin-top: -10rem;
@@ -43,7 +44,6 @@
 
 .about__title {
     font-size: 5rem;
-    color: $base-white;
 
     @media (max-width: 1025px) {
         font-size: 4rem;

@@ -22,6 +22,10 @@ h3 {
     font-family: $special-font;
 }
 
+h2 {
+    color: $base-white;
+}
+
 html {
     @media (min-width: 2301px) {
         font-size: 20px;
@@ -51,3 +55,4 @@ html {
 @import './NavBar';
 @import './Home';
 @import './About';
+@import './Sale';

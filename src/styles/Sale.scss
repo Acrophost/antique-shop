@@ -1,0 +1,67 @@
+.sale {
+    width: 100%;
+    min-height: 110vh;
+    background: url(../images/sale-bg.jfif);
+    background-color: $primary-color;
+    background-blend-mode: luminosity, normal;
+    background-attachment: fixed;
+    margin-top: -2rem;
+    padding: 10rem 0;
+    color: $base-white;
+}
+
+.sale__title {
+    font-size: 3rem;
+    margin-left: 4rem;
+}
+
+.sale__accent-line {
+    margin-left: 8rem;
+    margin-top: -2rem;
+    width: 20rem;
+    & > line {
+        stroke: $accent;
+        stroke-width: 8;
+    }
+}
+
+.sale__all-sales {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.sale__single {
+    text-align: center;
+    width: 20%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.sale__category-text,
+.sale__date-text {
+    background: $primary-color;
+    padding: 1rem;
+    margin: 0.5rem;
+    -webkit-box-shadow: 1px 28px 42px 5px rgba(0, 0, 0, 0.34);
+    -moz-box-shadow: 1px 28px 42px 5px rgba(0, 0, 0, 0.34);
+    box-shadow: 1px 28px 42px 5px rgba(0, 0, 0, 0.34);
+}
+
+.sale__category-text {
+    min-width: 50%;
+}
+
+.sale__date-text {
+    background: $deeper-accent;
+    min-width: 75%;
+}
+
+[class*='sale__icon-'] {
+    width: 7rem;
+    background-color: $base-white;
+    height: 10rem;
+}
