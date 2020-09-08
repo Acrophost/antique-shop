@@ -8,11 +8,23 @@
     margin-top: -2rem;
     padding: 10rem 0;
     color: $base-white;
+
+    @media (min-width: 1921px) {
+        background-size: 150vw;
+    }
 }
 
 .sale__title {
     font-size: 3rem;
     margin-left: 4rem;
+
+    @media (max-width: 1275px) {
+        font-size: 4rem;
+    }
+
+    @media (max-width: 955px) {
+        font-size: 5rem;
+    }
 }
 
 .sale__accent-line {
@@ -26,16 +38,46 @@
 }
 
 .sale__all-sales {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
-    align-items: center;
+    display: grid;
     width: 100%;
+    gap: 2rem;
+    grid-template-areas: 'furniture clocks books';
+    justify-items: center;
+
+    @media (max-width: 900px) {
+        gap: 5rem;
+        margin-top: -12rem;
+        grid-template-areas:
+            'furniture clocks'
+            'books .';
+    }
+
+    @media (max-width: 600px) {
+        grid-template-areas:
+            'furniture'
+            'clocks'
+            'books';
+    }
+
+    @media (max-width: 320px) {
+        margin-top: -15rem;
+    }
+}
+
+.sale-single:nth-of-type(1) {
+    grid-area: furniture;
+}
+
+.sale-single:nth-of-type(2) {
+    grid-area: clocks;
+}
+
+.sale-single:nth-of-type(3) {
+    grid-area: books;
 }
 
 .sale__single {
     text-align: center;
-    width: 33%;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -52,18 +94,49 @@
 }
 
 .sale__category-text {
-    min-width: 30%;
-    font-size: 1.2rem;
+    min-width: 15rem;
+    font-size: 1.3rem;
+
+    @media (max-width: 1275px) {
+        min-width: 20rem;
+        font-size: 2rem;
+    }
+
+    @media (max-width: 955px) {
+        min-width: 25rem;
+        font-size: 2.7rem;
+    }
 }
 
 .sale__date-text {
     background: $deeper-accent;
-    min-width: 50%;
+    min-width: 22rem;
+    font-size: 1.2rem;
     color: scale-color($base-white, $alpha: -20%);
+
+    @media (max-width: 1275px) {
+        min-width: 27rem;
+        font-size: 1.7rem;
+    }
+
+    @media (max-width: 955px) {
+        min-width: 32rem;
+        font-size: 2.4rem;
+    }
 }
 
 [class*='sale__icon-'] {
     width: 7rem;
     background-color: $base-white;
     height: 10rem;
+
+    @media (max-width: 1275px) {
+        min-width: 12rem;
+        height: 15rem;
+    }
+
+    @media (max-width: 955px) {
+        min-width: 14rem;
+        height: 17rem;
+    }
 }
