@@ -36,7 +36,7 @@
         padding-top: 11rem;
     }
 
-    @media (max-width: 800px) {
+    @media (max-width: 955px) {
         padding-top: 11rem;
         width: 60rem;
     }
@@ -91,7 +91,7 @@
         font-size: 4rem;
     }
 
-    @media (max-width: 800px) {
+    @media (max-width: 955px) {
         font-size: 4rem;
     }
 
@@ -122,7 +122,7 @@
         padding: 2rem 4rem;
     }
 
-    @media (max-width: 800px) {
+    @media (max-width: 955px) {
         padding: 2rem;
     }
 
@@ -167,7 +167,7 @@
         transition: all 0.5s linear 2s;
     }
 
-    @media (max-width: 800px), (max-width: 1025px) and (min-height: 1365px) {
+    @media (max-width: 955px), (max-width: 1025px) and (min-height: 1365px) {
         top: 2rem;
         width: 6rem;
         height: 0.6rem;
@@ -225,12 +225,12 @@
             top: 2rem;
             transform: rotate(-45deg);
 
-            @media (max-width: 1025px) and (min-height: 1365px), (max-width: 800px) {
+            @media (max-width: 1025px) and (min-height: 1365px), (max-width: 955px) {
                 top: 4rem;
             }
         }
 
-        @media (max-width: 1025px) and (min-height: 1365px), (max-width: 800px) {
+        @media (max-width: 1025px) and (min-height: 1365px), (max-width: 955px) {
             left: 48rem;
             width: 8rem;
         }
@@ -240,7 +240,7 @@
         }
     }
 
-    @media (max-width: 800px), (max-width: 1025px) and (min-height: 1365px) {
+    @media (max-width: 955px), (max-width: 1025px) and (min-height: 1365px) {
         width: 24rem;
         height: 8rem;
         font-size: 5rem;
@@ -258,7 +258,7 @@
     margin-left: 2rem;
     right: 1rem;
 
-    @media (max-width: 800px), (max-width: 1025px) and (min-height: 1365px) {
+    @media (max-width: 955px), (max-width: 1025px) and (min-height: 1365px) {
         width: 8rem;
         height: 8rem;
     }
@@ -272,7 +272,7 @@
     position: relative;
     width: 2.5rem;
 
-    @media (max-width: 800px), (max-width: 1025px) and (min-height: 1365px) {
+    @media (max-width: 955px), (max-width: 1025px) and (min-height: 1365px) {
         width: 5rem;
     }
 }
