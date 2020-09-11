@@ -5,6 +5,7 @@
     display: flex;
     margin-top: -5rem;
     margin-bottom: 0;
+    overflow: hidden;
 
     @media (max-width: 1025px) and (min-height: 1365px), (max-width: 800px) {
         margin-top: -10rem;
@@ -24,7 +25,6 @@
     width: 45vw;
     margin: 6rem 3rem;
     background: $deeper-accent;
-    border-radius: 1rem;
     height: 90vh;
     display: flex;
     flex-flow: column nowrap;
@@ -100,7 +100,7 @@
     font-size: 2rem;
     color: scale-color($base-white, $alpha: -20%);
 
-    @media (max-width: 1025px) and (min-height: 1365px), (max-width: 800px) {
+    @media (max-width: 1025px) and (min-height: 1365px) {
         width: 90vw;
         height: 45vw;
         font-size: 3.2rem;

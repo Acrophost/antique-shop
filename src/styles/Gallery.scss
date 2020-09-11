@@ -1,0 +1,110 @@
+.gallery {
+    background: $base-black;
+    margin-top: -2rem;
+    padding-top: 7rem;
+    overflow: hidden;
+    width: 100%;
+    min-height: 110vh;
+}
+
+.gallery__title {
+    font-size: 3rem;
+    margin-left: 4rem;
+}
+
+.gallery__accent-line {
+    margin-left: 8rem;
+    margin-top: -2rem;
+    width: 20rem;
+    & > line {
+        stroke: $accent;
+        stroke-width: 8;
+    }
+}
+
+.gallery__images-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.gallery__button {
+    width: 25%;
+    height: 18rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    display: block;
+
+    @media (max-width: 1025px) {
+        width: 33%;
+        height: 20rem;
+    }
+
+    @media (max-width: 800px) {
+        height: 22rem;
+    }
+
+    @media (max-width: 600px) {
+        width: 50%;
+        height: 25rem;
+    }
+
+    @media (max-width: 480px) {
+        width: 100%;
+        height: 35vh;
+    }
+
+    @media (max-width: 411px) and (min-height: 811px) {
+        height: 30vh;
+    }
+
+    @media (max-width: 280px) {
+        height: 25vh;
+    }
+}
+
+.gallery__img {
+    width: 100%;
+}
+
+.gallery__button-overlay {
+    position: absolute;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: scale-color($primary-color, $alpha: -30%);
+    z-index: 2;
+}
+
+.gallery__button-text {
+    color: $base-white;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    text-align: center;
+
+    h3 {
+        font-size: 2rem;
+        width: 90%;
+        text-align: center;
+    }
+
+    p {
+        margin-top: -1.6rem;
+        font-size: 1.1rem;
+        color: scale-color($base-white, $alpha: -30%);
+        text-align: center;
+    }
+}
