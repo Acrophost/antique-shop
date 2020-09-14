@@ -1,6 +1,6 @@
 .nav-bar {
     position: fixed;
-    padding: 1rem;
+    padding: 2rem;
     width: 100%;
     z-index: 5;
 }
@@ -256,7 +256,7 @@
     width: 4rem;
     height: 4rem;
     margin-left: 2rem;
-    right: 1rem;
+    right: 2rem;
 
     @media (max-width: 955px), (max-width: 1025px) and (min-height: 1365px) {
         width: 8rem;
