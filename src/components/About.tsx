@@ -1,6 +1,6 @@
-import React, { ReactElement } from 'react';
+import React, { FunctionComponent } from 'react';
 
-const About = (): ReactElement => (
+const About: FunctionComponent = () => (
     <div className="about">
         <div className="about__title-container">
             <h2 className="about__title">What do we do?</h2>

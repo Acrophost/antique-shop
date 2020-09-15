@@ -1,7 +1,7 @@
-import React, { ReactElement } from 'react';
+import React, { FunctionComponent } from 'react';
 import HomeBackground from '../svgs/HomeBackground';
 
-const Home = (): ReactElement => (
+const Home: FunctionComponent = () => (
     <div className="home">
         <div className="home__title-container">
             <svg className="home__accent-line" height="100" width="700">

@@ -1,5 +1,5 @@
-import React, { ReactElement } from 'react';
+import React, { FunctionComponent } from 'react';
 
-const Contact = (): ReactElement => <div className="contact">Page--contact</div>;
+const Contact: FunctionComponent = () => <div className="contact">Page--contact</div>;
 
 export default Contact;

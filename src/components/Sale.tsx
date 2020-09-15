@@ -1,6 +1,6 @@
-import React, { ReactElement } from 'react';
+import React, { FunctionComponent } from 'react';
 
-const Sale = (): ReactElement => (
+const Sale: FunctionComponent = () => (
     <div className="sale">
         <h2 className="sale__title">Current Sales</h2>
         <svg className="sale__accent-line" height="100" width="700">
