@@ -1,10 +1,10 @@
-import React, { ReactElement } from 'react';
+import React, { FunctionComponent } from 'react';
 
 interface HTMLAttribute {
     className: string;
 }
 
-const Logo = (props: HTMLAttribute): ReactElement => {
+const Logo: FunctionComponent<HTMLAttribute> = (props) => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" id="bookcase-logo" viewBox="0 0 481.64 567" {...props}>
             <path

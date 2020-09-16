@@ -1,10 +1,10 @@
-import React, { ReactElement } from 'react';
+import React, { FunctionComponent } from 'react';
 
 interface HTMLAttribute {
     className: string;
 }
 
-const HomeBackground = (props: HTMLAttribute): ReactElement => {
+const HomeBackground: FunctionComponent<HTMLAttribute> = (props) => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="70 0 2000 1363.34" {...props}>
             <g id="Layer_2" data-name="Layer 2">
