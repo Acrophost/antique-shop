@@ -1,10 +1,18 @@
 import React, { FunctionComponent, useState } from 'react';
 
 import Modal from './Modal';
+import Details from './Details';
 
-type Antique = { name: string; description: string; image: string; alt: string };
+interface Antique {
+    name: string;
+    description: string;
+    image: string;
+    alt: string;
+}
 
-type AntiqueProps = { antiques: Antique[] };
+interface AntiqueProps {
+    antiques: Antique[];
+}
 
 const Gallery: FunctionComponent<AntiqueProps> = (props: AntiqueProps) => {
     const [currentlyHovered, setCurrentHover] = useState(-1);
@@ -53,25 +61,7 @@ const Gallery: FunctionComponent<AntiqueProps> = (props: AntiqueProps) => {
             </div>
             {showModal ? (
                 <Modal>
-                    <div className="modal">
-                        <div className="modal__overlay" onClick={(): void => setShowModal(false)}>
-                            <div className="modal__window" onClick={(event): void => event.stopPropagation()}>
-                                <button
-                                    className="modal__button"
-                                    onClick={(): void => {
-                                        setShowModal(false);
-                                    }}
-                                >
-                                    <div className="modal__button-cross"></div>
-                                </button>
-                                <img className="modal__img" src={modal.img} alt={modal.alt} />
-                                <div className="modal__text">
-                                    <h3 className="modal__title">{modal.name}</h3>
-                                    <div className="modal__description">{modal.description}</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <Details modal={modal} setShowModal={setShowModal} />
                 </Modal>
             ) : null}
         </div>

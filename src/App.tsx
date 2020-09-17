@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { FunctionComponent } from 'react';
 
 import './styles/App.scss';
 
@@ -11,7 +11,7 @@ import Contact from './components/Contact';
 
 import Antiques from './data/Antiques';
 
-function App(): ReactElement {
+const App: FunctionComponent = () => {
     const location = '/';
 
     return (
@@ -24,6 +24,6 @@ function App(): ReactElement {
             <Contact />
         </div>
     );
-}
+};
 
 export default App;

@@ -1,0 +1,20 @@
+.google-map {
+    width: calc(50vw - 5rem);
+    height: 65vh;
+    margin-top: -2rem;
+}
+
+.pin {
+    display: flex;
+    align-items: center;
+    width: 180px;
+}
+
+.pin-icon {
+    width: 1.2rem;
+}
+
+.pin-text {
+    margin-left: 0.5rem;
+    font-size: 1rem;
+}

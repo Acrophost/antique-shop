@@ -1,15 +1,15 @@
 import React, { ReactElement, Component } from 'react';
 import Logo from '../svgs/Logo';
 
-type LocationProps = {
+interface LocationProps {
     location: string;
-};
+}
 
-type NavState = {
+interface NavState {
     menuClass: string;
     sidebarClass: string;
     active: number;
-};
+}
 
 class NavBar extends Component<LocationProps> {
     state: NavState;
