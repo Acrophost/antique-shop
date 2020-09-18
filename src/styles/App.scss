@@ -33,6 +33,18 @@ h2 {
     @media (max-width: 955px) {
         font-size: 5rem;
     }
+
+    @media (max-width: 1025px) and (min-height: 1365px), (max-width: 800px) {
+        font-size: 7rem;
+    }
+
+    @media (max-width: 600px) {
+        font-size: 6rem;
+    }
+
+    @media (max-width: 280px) {
+        font-size: 5rem;
+    }
 }
 
 html {

@@ -22,6 +22,10 @@
 .contact__content {
     display: flex;
     align-items: center;
+
+    @media (max-width: 800px), (max-width: 1025px) and (min-height: 1365px) {
+        flex-flow: column nowrap;
+    }
 }
 
 .contact__info {
@@ -29,6 +33,24 @@
     padding-left: 6rem;
     color: $base-white;
     line-height: 0.8rem;
+
+    @media (max-width: 1025px) {
+        line-height: 2rem;
+        margin-top: -5rem;
+    }
+
+    @media (max-width: 800px), (max-width: 1025px) and (min-height: 1365px) {
+        width: 100%;
+        margin-top: -8rem;
+    }
+
+    @media (max-width: 480px) {
+        margin-top: -13rem;
+    }
+
+    @media (max-width: 320px) {
+        line-height: 3rem;
+    }
 }
 
 .contact__phone-mail,
@@ -39,5 +61,17 @@
 
     span {
         color: $accent;
+    }
+
+    @media (max-width: 1025px) {
+        font-size: 2rem;
+    }
+
+    @media (max-width: 800px), (max-width: 1025px) and (min-height: 1365px) {
+        font-size: 3rem;
+    }
+
+    @media (max-width: 480px) {
+        margin-bottom: 7rem;
     }
 }
