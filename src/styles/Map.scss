@@ -17,4 +17,6 @@
 .pin-text {
     margin-left: 0.5rem;
     font-size: 1rem;
+    -webkit-text-stroke: 0.2px $base-white;
+    color: $base-black;
 }

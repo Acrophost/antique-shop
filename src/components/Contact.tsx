@@ -4,7 +4,7 @@ import MapContainer from './MapContainer';
 
 const Contact: FunctionComponent = () => {
     const location = { address: 'The Antique House', lat: 53.224, lng: -4.197 };
-    const zoomLevel = 4;
+    const zoomLevel = 14;
 
     return (
         <div className="contact">
