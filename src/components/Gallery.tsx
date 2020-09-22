@@ -1,7 +1,13 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useState, ForwardRefRenderFunction, ComponentPropsWithoutRef } from 'react';
 
 import Modal from './Modal';
 import Details from './Details';
+
+const fwRef: ForwardRefRenderFunction<HTMLDivElement, ComponentPropsWithoutRef<'div'>> = (props, ref) => (
+    <div className="gallery" ref={ref} {...props}></div>
+);
+
+const GalleryEl = React.forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(fwRef);
 
 interface Antique {
     name: string;
@@ -12,15 +18,17 @@ interface Antique {
 
 interface AntiqueProps {
     antiques: Antique[];
+    refs: { gallery: React.RefObject<HTMLDivElement> };
 }
 
 const Gallery: FunctionComponent<AntiqueProps> = (props: AntiqueProps) => {
     const [currentlyHovered, setCurrentHover] = useState(-1);
     const [showModal, setShowModal] = useState(false);
     const [modal, setModal] = useState({ key: -1, img: '', alt: '', name: '', description: '' });
+    props.refs.gallery = React.createRef<HTMLDivElement>();
 
     return (
-        <div className="gallery">
+        <GalleryEl ref={props.refs.gallery}>
             <h2 className="gallery__title">Our antiques</h2>
             <svg className="gallery__accent-line" height="100" width="700">
                 <line x1="0" y1="0" x2="800" y2="0" />
@@ -64,7 +72,7 @@ const Gallery: FunctionComponent<AntiqueProps> = (props: AntiqueProps) => {
                     <Details modal={modal} setShowModal={setShowModal} />
                 </Modal>
             ) : null}
-        </div>
+        </GalleryEl>
     );
 };
 

@@ -1,13 +1,24 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ForwardRefRenderFunction, ComponentPropsWithoutRef } from 'react';
 
 import MapContainer from './MapContainer';
 
-const Contact: FunctionComponent = () => {
+const fwRef: ForwardRefRenderFunction<HTMLDivElement, ComponentPropsWithoutRef<'div'>> = (props, ref) => (
+    <div className="contact" ref={ref} {...props}></div>
+);
+
+const ContactEl = React.forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(fwRef);
+
+interface RefProps {
+    refs: { contact: React.RefObject<HTMLDivElement> };
+}
+
+const Contact: FunctionComponent<RefProps> = (props: RefProps) => {
     const location = { address: 'The Antique House', lat: 53.224, lng: -4.197 };
     const zoomLevel = 14;
+    props.refs.contact = React.createRef<HTMLDivElement>();
 
     return (
-        <div className="contact">
+        <ContactEl ref={props.refs.contact}>
             <h2 className="contact__title">How to get in touch with us?</h2>
             <svg className="contact__accent-line" height="100" width="700">
                 <line x1="0" y1="0" x2="800" y2="0" />
@@ -38,7 +49,7 @@ const Contact: FunctionComponent = () => {
                     <MapContainer location={location} zoomLevel={zoomLevel} />
                 </div>
             </div>
-        </div>
+        </ContactEl>
     );
 };
 

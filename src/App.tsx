@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 
 import './styles/App.scss';
 
@@ -12,16 +12,23 @@ import Contact from './components/Contact';
 import Antiques from './data/Antiques';
 
 const App: FunctionComponent = () => {
-    const location = '/';
+    const [location, setLocation] = useState('/');
+    const refs = {
+        home: React.createRef<HTMLDivElement>(),
+        about: React.createRef<HTMLDivElement>(),
+        sales: React.createRef<HTMLDivElement>(),
+        gallery: React.createRef<HTMLDivElement>(),
+        contact: React.createRef<HTMLDivElement>(),
+    };
 
     return (
         <div className="App">
-            <NavBar location={location} />
-            <Home />
-            <About />
-            <Sales />
-            <Gallery antiques={Antiques} />
-            <Contact />
+            <NavBar location={location} setLocation={setLocation} refs={refs} />
+            <Home refs={refs} />
+            <About refs={refs} />
+            <Sales refs={refs} />
+            <Gallery antiques={Antiques} refs={refs} />
+            <Contact refs={refs} />
         </div>
     );
 };

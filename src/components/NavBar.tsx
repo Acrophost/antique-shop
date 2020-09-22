@@ -1,8 +1,16 @@
-import React, { ReactElement, Component } from 'react';
+import React, { ReactElement, Component, Dispatch, RefObject } from 'react';
 import Logo from '../svgs/Logo';
 
 interface LocationProps {
     location: string;
+    setLocation: Dispatch<string>;
+    refs: {
+        home: RefObject<HTMLDivElement>;
+        about: RefObject<HTMLDivElement>;
+        sales: RefObject<HTMLDivElement>;
+        gallery: RefObject<HTMLDivElement>;
+        contact: RefObject<HTMLDivElement>;
+    };
 }
 
 interface NavState {
@@ -24,6 +32,46 @@ class NavBar extends Component<LocationProps> {
         };
 
         this.openSidebar = this.openSidebar.bind(this);
+        this.checkLocation = this.checkLocation.bind(this);
+    }
+
+    componentDidMount(): void {
+        window.onscroll = (): void => {
+            window.addEventListener('scroll', this.checkLocation);
+        };
+
+        const buttons = document.getElementsByClassName('nav__sidebar-text');
+        buttons[this.state.active].classList.add('active');
+    }
+
+    checkLocation(): void {
+        if (
+            this.props.refs.about &&
+            this.props.refs.about.current &&
+            window.pageYOffset < this.props.refs.about.current.offsetTop - 300
+        ) {
+            this.props.setLocation('/');
+        } else if (
+            this.props.refs.sales &&
+            this.props.refs.sales.current &&
+            window.pageYOffset < this.props.refs.sales.current.offsetTop - 300
+        ) {
+            this.props.setLocation('about');
+        } else if (
+            this.props.refs.gallery &&
+            this.props.refs.gallery.current &&
+            window.pageYOffset < this.props.refs.gallery.current.offsetTop - 400
+        ) {
+            this.props.setLocation('sales');
+        } else if (
+            this.props.refs.contact &&
+            this.props.refs.contact.current &&
+            window.pageYOffset < this.props.refs.contact.current.offsetTop - 400
+        ) {
+            this.props.setLocation('gallery');
+        } else {
+            this.props.setLocation('contact');
+        }
     }
 
     openSidebar(): void {
@@ -37,42 +85,94 @@ class NavBar extends Component<LocationProps> {
         }
     }
 
-    componentDidMount(): void {
-        const sidebarButtons = document.getElementsByClassName('nav__sidebar-text');
-        for (let i = 0; i < sidebarButtons.length; i++) {
-            if (i === this.state.active) sidebarButtons[i].classList.add('active');
-            else sidebarButtons[i].classList.remove('active');
-        }
-    }
-
     render(): ReactElement {
         return (
             <header className="nav-bar">
                 <ul className={this.state.sidebarClass}>
                     <li className="nav__sidebar-button">
-                        <a className="nav__sidebar-text" data-content="Home" href="/">
+                        <button
+                            className="nav__sidebar-text"
+                            data-content="Home"
+                            onClick={(): void => {
+                                if (!this.props.refs.home || !this.props.refs.home.current) return;
+                                this.props.setLocation('/');
+                                this.props.refs.home.current.scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'nearest',
+                                });
+                                this.props.refs.home.current.focus();
+                            }}
+                        >
                             Home
-                        </a>
+                        </button>
                     </li>
                     <li className="nav__sidebar-button">
-                        <a className="nav__sidebar-text" data-content="What do we do?" href="about">
+                        <button
+                            className="nav__sidebar-text"
+                            data-content="What do we do?"
+                            onClick={(): void => {
+                                if (!this.props.refs.about || !this.props.refs.about.current) return;
+                                this.props.setLocation('about');
+                                this.props.refs.about.current.scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'nearest',
+                                });
+                                this.props.refs.about.current.focus();
+                            }}
+                        >
                             What do we do?
-                        </a>
+                        </button>
                     </li>
                     <li className="nav__sidebar-button">
-                        <a className="nav__sidebar-text" data-content="Current discounts" href="sales">
+                        <button
+                            className="nav__sidebar-text"
+                            data-content="Current discounts"
+                            onClick={(): void => {
+                                if (!this.props.refs.sales || !this.props.refs.sales.current) return;
+                                this.props.setLocation('sales');
+                                this.props.refs.sales.current.scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'nearest',
+                                });
+                                this.props.refs.sales.current.focus();
+                            }}
+                        >
                             Current discounts
-                        </a>
+                        </button>
                     </li>
                     <li className="nav__sidebar-button">
-                        <a className="nav__sidebar-text" data-content="Our antiques" href="gallery">
+                        <button
+                            className="nav__sidebar-text"
+                            data-content="Our antiques"
+                            onClick={(): void => {
+                                if (!this.props.refs.gallery || !this.props.refs.gallery.current) return;
+                                this.props.setLocation('gallery');
+                                this.props.refs.gallery.current.scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'nearest',
+                                });
+                                this.props.refs.gallery.current.focus();
+                            }}
+                        >
                             Our antiques
-                        </a>
+                        </button>
                     </li>
                     <li className="nav__sidebar-button">
-                        <a className="nav__sidebar-text" data-content="How to get in touch with us?" href="contact">
+                        <button
+                            className="nav__sidebar-text"
+                            data-content="How to get in touch with us?"
+                            onClick={(): void => {
+                                if (!this.props.refs.contact || !this.props.refs.contact.current) return;
+                                this.props.setLocation('contact');
+                                this.props.refs.contact.current.scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'nearest',
+                                });
+                                this.props.refs.contact.current.focus();
+                            }}
+                        >
                             How to get in touch with us?
-                        </a>
+                        </button>
                     </li>
                 </ul>
                 <button className={this.state.menuClass} onClick={this.openSidebar}>
@@ -80,7 +180,19 @@ class NavBar extends Component<LocationProps> {
                     <div className="nav__hamburger-menu"></div>
                 </button>
 
-                <button className="nav__logo-container">
+                <button
+                    className="nav__logo-container"
+                    onClick={(): void => {
+                        this.props.setLocation('/');
+                        if (this.props.refs.home && this.props.refs.home.current) {
+                            this.props.refs.home.current.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'nearest',
+                            });
+                            this.props.refs.home.current.focus();
+                        }
+                    }}
+                >
                     <Logo className="nav__logo" />
                 </button>
             </header>
