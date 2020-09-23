@@ -1,14 +1,10 @@
 .about {
     position: relative;
-    min-height: 120vh;
-    background: $base-black;
+    min-height: 100vh;
     display: flex;
-    margin-top: -5rem;
-    margin-bottom: 0;
     overflow: hidden;
 
     @media (max-width: 1025px) and (min-height: 1365px), (max-width: 800px) {
-        margin-top: -10rem;
         flex-flow: column nowrap;
     }
 
@@ -23,7 +19,7 @@
 
 .about__title-container {
     width: 45vw;
-    margin: 6rem 3rem;
+    margin: 3rem 3rem;
     background: $deeper-accent;
     height: 90vh;
     display: flex;

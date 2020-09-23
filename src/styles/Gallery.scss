@@ -1,10 +1,9 @@
 .gallery {
-    background: $base-black;
-    margin-top: -2rem;
-    padding-top: 7rem;
+    padding-top: 5rem;
     overflow: hidden;
     width: 100%;
-    min-height: 110vh;
+    min-height: 100vh;
+    margin-top: 1rem;
 }
 
 .gallery__title {

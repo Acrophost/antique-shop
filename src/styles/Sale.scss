@@ -5,8 +5,6 @@
     background-color: $primary-color;
     background-blend-mode: luminosity, normal;
     background-attachment: fixed;
-    margin-top: -2rem;
-    padding: 10rem 0;
     color: $base-white;
 
     @media (min-width: 1921px) {
@@ -15,6 +13,7 @@
 }
 
 .sale__title {
+    padding-top: 15rem;
     margin-left: 4rem;
 }
 
