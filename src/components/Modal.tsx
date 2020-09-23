@@ -13,9 +13,11 @@ const Modal: FunctionComponent = ({ children }) => {
         }
 
         modalRoot.appendChild(elRef.current);
+        document.body.style.overflow = 'hidden';
 
         return (): void => {
             modalRoot.removeChild(currentRef);
+            document.body.style.overflow = 'unset';
         };
     }, []);
 
