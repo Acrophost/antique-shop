@@ -1,7 +1,8 @@
-import React, { FunctionComponent } from 'react';
+import React, { Component, ReactElement } from 'react';
 
 import './styles/App.scss';
 
+import Loader from './components/Loader';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
 import About from './components/About';
@@ -11,25 +12,40 @@ import Contact from './components/Contact';
 
 import Antiques from './data/Antiques';
 
-const App: FunctionComponent = () => {
-    const refs = {
-        home: React.createRef<HTMLDivElement>(),
-        about: React.createRef<HTMLDivElement>(),
-        sales: React.createRef<HTMLDivElement>(),
-        gallery: React.createRef<HTMLDivElement>(),
-        contact: React.createRef<HTMLDivElement>(),
+class App extends Component {
+    state = {
+        loading: true,
+        refs: {
+            home: React.createRef<HTMLDivElement>(),
+            about: React.createRef<HTMLDivElement>(),
+            sales: React.createRef<HTMLDivElement>(),
+            gallery: React.createRef<HTMLDivElement>(),
+            contact: React.createRef<HTMLDivElement>(),
+        },
     };
 
-    return (
-        <div className="App">
-            <NavBar refs={refs} />
-            <Home refs={refs} />
-            <About refs={refs} />
-            <Sales refs={refs} />
-            <Gallery antiques={Antiques} refs={refs} />
-            <Contact refs={refs} />
-        </div>
-    );
-};
+    componentDidMount(): void {
+        setTimeout(() => {
+            this.setState({ loading: false });
+        }, 6500);
+    }
+
+    render(): ReactElement {
+        if (this.state.loading) {
+            return <Loader />;
+        } else {
+            return (
+                <div className="App">
+                    <NavBar refs={this.state.refs} />
+                    <Home refs={this.state.refs} />
+                    <About refs={this.state.refs} />
+                    <Sales refs={this.state.refs} />
+                    <Gallery antiques={Antiques} refs={this.state.refs} />
+                    <Contact refs={this.state.refs} />
+                </div>
+            );
+        }
+    }
+}
 
 export default App;
