@@ -85,6 +85,7 @@
 .home__title {
     font-size: 10rem;
     padding-right: 2.5%;
+    animation: slide-left 1s ease-in forwards;
 
     @media (max-width: 1025px) and (min-height: 769px) {
         font-size: 11rem;
@@ -116,10 +117,13 @@
 }
 .home__accent-line {
     position: absolute;
+    opacity: 0;
     top: 20rem;
     right: 0;
     left: auto;
     width: 20vw;
+    animation: slide-left 0.5s ease-in 1s forwards;
+
     & > line {
         stroke: $deeper-accent;
         stroke-width: 10;
@@ -262,4 +266,44 @@
     stroke: $base-black;
     stroke-miterlimit: 10;
     stroke-width: 3px;
+    transition: transform 0.5s linear;
+}
+
+.stairs {
+    transition: d 0.3s linear;
+
+    @for $i from 10 through 7 {
+        &:nth-child(#{$i}) {
+            transition-delay: #{($i - 6) * 0.3}s;
+        }
+    }
+
+    &:nth-child(11) {
+        transition-delay: 1.2s;
+    }
+
+    &:nth-child(6) {
+        transition-delay: 0.3s;
+    }
+}
+
+.furniture,
+.furniture > * {
+    transition: transform 0.3s linear;
+}
+
+#table {
+    transition-delay: 0.3s;
+}
+
+#globe {
+    transition-delay: 0.6s;
+}
+
+#phonograph {
+    transition-delay: 0.9s;
+}
+
+#chair {
+    transition-delay: 1.2s;
 }

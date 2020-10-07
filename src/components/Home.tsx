@@ -13,6 +13,7 @@ interface RefProps {
 
 const Home: FunctionComponent<RefProps> = (props: RefProps) => {
     props.refs.home = React.createRef<HTMLDivElement>();
+
     return (
         <HomeEl ref={props.refs.home}>
             <div className="home__title-container">
@@ -23,7 +24,7 @@ const Home: FunctionComponent<RefProps> = (props: RefProps) => {
                     The Antique <span>House</span>
                 </h1>
             </div>
-            <HomeBackground className="home__background-furniture" />
+            <HomeBackground className="home__background-furniture" home-height={props.refs.home} />
         </HomeEl>
     );
 };
