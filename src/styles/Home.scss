@@ -266,7 +266,7 @@
     stroke: $base-black;
     stroke-miterlimit: 10;
     stroke-width: 3px;
-    transition: transform 0.5s linear;
+    transition: transform 0.3s linear;
 }
 
 .stairs {
@@ -274,16 +274,16 @@
 
     @for $i from 10 through 7 {
         &:nth-child(#{$i}) {
-            transition-delay: #{($i - 6) * 0.3}s;
+            transition-delay: #{($i - 6) * 0.1}s;
         }
     }
 
     &:nth-child(11) {
-        transition-delay: 1.2s;
+        transition-delay: 0.4s;
     }
 
     &:nth-child(6) {
-        transition-delay: 0.3s;
+        transition-delay: 0.1s;
     }
 }
 
@@ -293,17 +293,17 @@
 }
 
 #table {
-    transition-delay: 0.3s;
+    transition-delay: 0.1s;
 }
 
 #globe {
-    transition-delay: 0.6s;
+    transition-delay: 0.2s;
 }
 
 #phonograph {
-    transition-delay: 0.9s;
+    transition-delay: 0.3s;
 }
 
 #chair {
-    transition-delay: 1.2s;
+    transition-delay: 0.4s;
 }

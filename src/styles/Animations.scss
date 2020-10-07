@@ -47,3 +47,34 @@
         opacity: 1;
     }
 }
+
+@keyframes slide-right {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(15rem);
+        opacity: 0;
+    }
+}
+
+@keyframes go-right {
+    from {
+        left: 0;
+        right: 100%;
+    }
+    40% {
+        left: 0;
+        right: 0;
+    }
+    60% {
+        left: 0;
+        right: 0;
+    }
+    to {
+        left: 100%;
+        right: 0;
+    }
+}

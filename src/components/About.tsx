@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ForwardRefRenderFunction, ComponentPropsWithoutRef } from 'react';
+import React, { FunctionComponent, ForwardRefRenderFunction, ComponentPropsWithoutRef, useEffect } from 'react';
 
 const fwRef: ForwardRefRenderFunction<HTMLDivElement, ComponentPropsWithoutRef<'div'>> = (props, ref) => (
     <div className="about" ref={ref} {...props}></div>
@@ -12,15 +12,43 @@ interface RefProps {
 
 const About: FunctionComponent<RefProps> = (props: RefProps) => {
     props.refs.about = React.createRef<HTMLDivElement>();
+
+    useEffect(() => {
+        const animateAbout = (): void => {
+            const titleContainer = document.getElementsByClassName('animatedBox')[0];
+
+            if (!props.refs.about.current || !titleContainer) return;
+
+            if (window.scrollY > props.refs.about.current.getBoundingClientRect().top)
+                titleContainer.classList.add('animatedBox-in');
+
+            // if (
+            //     window.scrollY < props.refs.about.current.getBoundingClientRect().top ||
+            //     window.scrollY > props.refs.about.current.getBoundingClientRect().bottom + 300
+            // )
+            //     titleContainer.classList.remove('animatedBox-in');
+        };
+        window.addEventListener('scroll', animateAbout);
+        return (): void => {
+            window.removeEventListener('scroll', animateAbout);
+        };
+    }, []);
+
     return (
         <AboutEl ref={props.refs.about}>
-            <div className="about__title-container">
-                <h2 className="about__title">What do we do?</h2>
-                <svg className="about__accent-line" height="100" width="700">
-                    <line x1="0" y1="0" x2="800" y2="0" />
-                </svg>
+            <div className="animatedBox">
+                <div className="about__title-container">
+                    <h2 className="about__title">What do we do?</h2>
+                    <svg className="about__accent-line" height="100" width="700">
+                        <line x1="0" y1="0" x2="800" y2="0" />
+                    </svg>
+                </div>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-            <div className="about__text-container">
+            <div className="about__text-container in">
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ex ex, accumsan ut nisl egestas,
                     tincidunt ullamcorper diam. Cras semper tellus ipsum, vitae mattis turpis faucibus sed.
