@@ -16,17 +16,21 @@ const About: FunctionComponent<RefProps> = (props: RefProps) => {
     useEffect(() => {
         const animateAbout = (): void => {
             const titleContainer = document.getElementsByClassName('animatedBox')[0];
+            const text = document.getElementsByClassName('about__text-container')[0];
 
             if (!props.refs.about.current || !titleContainer) return;
 
-            if (window.scrollY > props.refs.about.current.getBoundingClientRect().top)
+            if (window.scrollY > props.refs.about.current.getBoundingClientRect().top + 200) {
                 titleContainer.classList.add('animatedBox-in');
-
-            // if (
-            //     window.scrollY < props.refs.about.current.getBoundingClientRect().top ||
-            //     window.scrollY > props.refs.about.current.getBoundingClientRect().bottom + 300
-            // )
-            //     titleContainer.classList.remove('animatedBox-in');
+                text.classList.remove('out');
+            }
+            if (
+                window.scrollY < props.refs.about.current.getBoundingClientRect().top ||
+                window.scrollY > props.refs.about.current.getBoundingClientRect().bottom + 1700
+            ) {
+                titleContainer.classList.remove('animatedBox-in');
+                text.classList.add('out');
+            }
         };
         window.addEventListener('scroll', animateAbout);
         return (): void => {
@@ -48,7 +52,7 @@ const About: FunctionComponent<RefProps> = (props: RefProps) => {
                 <span></span>
                 <span></span>
             </div>
-            <div className="about__text-container in">
+            <div className="about__text-container">
                 <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ex ex, accumsan ut nisl egestas,
                     tincidunt ullamcorper diam. Cras semper tellus ipsum, vitae mattis turpis faucibus sed.

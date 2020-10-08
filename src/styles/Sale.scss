@@ -1,6 +1,6 @@
 .sale {
     width: 100%;
-    min-height: 110vh;
+    height: 100%;
     background: url(../images/sale-bg.jfif);
     background-color: $primary-color;
     background-blend-mode: luminosity, normal;
@@ -14,6 +14,7 @@
 
 .sale__title {
     padding-top: 15rem;
+    margin-top: 0;
     margin-left: 4rem;
 }
 
@@ -124,5 +125,158 @@
 
     @media (max-width: 955px) {
         min-width: 14rem;
+    }
+}
+
+.animatedBackground-in {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 110vh;
+    padding: 0;
+    margin: 0;
+
+    > span {
+        width: 5%;
+        left: 0;
+    }
+    > span:nth-child(2) {
+        left: 5%;
+    }
+    > span:nth-child(3) {
+        left: 10%;
+    }
+    > span:nth-child(4) {
+        left: 15%;
+    }
+    > span:nth-child(5) {
+        left: 20%;
+    }
+    > span:nth-child(6) {
+        left: 25%;
+    }
+    > span:nth-child(7) {
+        left: 30%;
+    }
+    > span:nth-child(8) {
+        left: 35%;
+    }
+    > span:nth-child(9) {
+        left: 40%;
+    }
+    > span:nth-child(10) {
+        left: 45%;
+    }
+    > span:nth-child(11) {
+        width: 6%;
+        left: 49%;
+    }
+    > span:nth-child(12) {
+        left: 55%;
+    }
+    > span:nth-child(13) {
+        left: 60%;
+    }
+    > span:nth-child(14) {
+        left: 65%;
+    }
+    > span:nth-child(15) {
+        left: 70%;
+    }
+    > span:nth-child(16) {
+        left: 75%;
+    }
+    > span:nth-child(17) {
+        left: 80%;
+    }
+    > span:nth-child(18) {
+        left: 85%;
+    }
+    > span:nth-child(19) {
+        left: 90%;
+    }
+    > span:nth-child(20) {
+        left: 95%;
+    }
+}
+
+.animatedBackground {
+    .sale {
+        opacity: 0;
+    }
+
+    > span {
+        position: absolute;
+        display: block;
+        background: $primary-color;
+    }
+}
+
+.animatedBackground-in {
+    > .sale {
+        opacity: 1;
+        transition-delay: 2.05s;
+    }
+
+    > span {
+        animation: go-bottom 3s;
+        animation-delay: 0.1s;
+    }
+    > span:nth-child(2) {
+        animation-delay: 0.15s;
+    }
+    > span:nth-child(3) {
+        animation-delay: 0.2s;
+    }
+    > span:nth-child(4) {
+        animation-delay: 0.25s;
+    }
+    > span:nth-child(5) {
+        animation-delay: 0.3s;
+    }
+    > span:nth-child(6) {
+        animation-delay: 0.35s;
+    }
+    > span:nth-child(7) {
+        animation-delay: 0.4s;
+    }
+    > span:nth-child(8) {
+        animation-delay: 0.45s;
+    }
+    > span:nth-child(9) {
+        animation-delay: 0.5s;
+    }
+    > span:nth-child(10) {
+        animation-delay: 0.55s;
+    }
+    > span:nth-child(11) {
+        animation-delay: 0.6s;
+    }
+    > span:nth-child(12) {
+        animation-delay: 0.65s;
+    }
+    > span:nth-child(13) {
+        animation-delay: 0.7s;
+    }
+    > span:nth-child(14) {
+        animation-delay: 0.75s;
+    }
+    > span:nth-child(15) {
+        animation-delay: 0.8s;
+    }
+    > span:nth-child(16) {
+        animation-delay: 0.85s;
+    }
+    > span:nth-child(17) {
+        animation-delay: 0.9s;
+    }
+    > span:nth-child(18) {
+        animation-delay: 0.95s;
+    }
+    > span:nth-child(19) {
+        animation-delay: 1s;
+    }
+    > span:nth-child(20) {
+        animation-delay: 1.05s;
     }
 }

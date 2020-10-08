@@ -78,3 +78,22 @@
         right: 0;
     }
 }
+
+@keyframes go-bottom {
+    from {
+        top: 0;
+        bottom: 100%;
+    }
+    40% {
+        top: 0;
+        bottom: 0;
+    }
+    60% {
+        top: 0;
+        bottom: 0;
+    }
+    to {
+        top: 100%;
+        bottom: 0;
+    }
+}
