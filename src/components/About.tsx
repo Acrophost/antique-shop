@@ -1,4 +1,10 @@
-import React, { FunctionComponent, ForwardRefRenderFunction, ComponentPropsWithoutRef, useEffect } from 'react';
+import React, {
+    FunctionComponent,
+    ForwardRefRenderFunction,
+    ComponentPropsWithoutRef,
+    useEffect,
+    RefObject,
+} from 'react';
 
 const fwRef: ForwardRefRenderFunction<HTMLDivElement, ComponentPropsWithoutRef<'div'>> = (props, ref) => (
     <div className="about" ref={ref} {...props}></div>
@@ -7,26 +13,26 @@ const fwRef: ForwardRefRenderFunction<HTMLDivElement, ComponentPropsWithoutRef<'
 const AboutEl = React.forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(fwRef);
 
 interface RefProps {
-    refs: { about: React.RefObject<HTMLDivElement> };
+    refs: RefObject<HTMLDivElement>[];
 }
 
 const About: FunctionComponent<RefProps> = (props: RefProps) => {
-    props.refs.about = React.createRef<HTMLDivElement>();
+    props.refs[1] = React.createRef<HTMLDivElement>();
 
     useEffect(() => {
         const animateAbout = (): void => {
             const titleContainer = document.getElementsByClassName('animatedBox')[0];
             const text = document.getElementsByClassName('about__text-container')[0];
 
-            if (!props.refs.about.current || !titleContainer) return;
+            if (!props.refs[1].current || !titleContainer) return;
 
-            if (window.scrollY > props.refs.about.current.getBoundingClientRect().top + 200) {
+            if (window.scrollY > props.refs[1].current.getBoundingClientRect().top + 200) {
                 titleContainer.classList.add('animatedBox-in');
                 text.classList.remove('out');
             }
             if (
-                window.scrollY < props.refs.about.current.getBoundingClientRect().top ||
-                window.scrollY > props.refs.about.current.getBoundingClientRect().bottom + 1700
+                window.scrollY < props.refs[1].current.getBoundingClientRect().top ||
+                window.scrollY > props.refs[1].current.getBoundingClientRect().bottom + 1700
             ) {
                 titleContainer.classList.remove('animatedBox-in');
                 text.classList.add('out');
@@ -39,7 +45,7 @@ const About: FunctionComponent<RefProps> = (props: RefProps) => {
     }, []);
 
     return (
-        <AboutEl ref={props.refs.about}>
+        <AboutEl ref={props.refs[1]}>
             <div className="animatedBox">
                 <div className="about__title-container">
                     <h2 className="about__title">What do we do?</h2>

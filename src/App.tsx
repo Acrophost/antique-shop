@@ -15,13 +15,13 @@ import Antiques from './data/Antiques';
 class App extends Component {
     state = {
         loading: true,
-        refs: {
-            home: React.createRef<HTMLDivElement>(),
-            about: React.createRef<HTMLDivElement>(),
-            sales: React.createRef<HTMLDivElement>(),
-            gallery: React.createRef<HTMLDivElement>(),
-            contact: React.createRef<HTMLDivElement>(),
-        },
+        refs: [
+            React.createRef<HTMLDivElement>(),
+            React.createRef<HTMLDivElement>(),
+            React.createRef<HTMLDivElement>(),
+            React.createRef<HTMLDivElement>(),
+            React.createRef<HTMLDivElement>(),
+        ],
     };
 
     componentDidMount(): void {

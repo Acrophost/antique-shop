@@ -1,15 +1,9 @@
 .sale {
     width: 100%;
-    height: 100%;
-    background: url(../images/sale-bg.jfif);
-    background-color: $primary-color;
-    background-blend-mode: luminosity, normal;
-    background-attachment: fixed;
+    height: 110vh;
+    padding: 0;
+    margin: 0;
     color: $base-white;
-
-    @media (min-width: 1921px) {
-        background-size: 150vw;
-    }
 }
 
 .sale__title {
@@ -128,13 +122,28 @@
     }
 }
 
+.img-bg {
+    background: url(../images/sale-bg.jfif);
+    background-color: $primary-color;
+    background-blend-mode: luminosity, normal;
+    background-attachment: fixed;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
 .animatedBackground-in {
     overflow: hidden;
     position: relative;
     width: 100%;
-    height: 110vh;
+    height: 100%;
     padding: 0;
     margin: 0;
+
+    @media (min-width: 1921px) {
+        background-size: 150vw;
+    }
 
     > span {
         width: 5%;
@@ -201,7 +210,7 @@
 }
 
 .animatedBackground {
-    .sale {
+    > .img-bg {
         opacity: 0;
     }
 
@@ -213,7 +222,7 @@
 }
 
 .animatedBackground-in {
-    > .sale {
+    > .img-bg {
         opacity: 1;
         transition-delay: 2.05s;
     }

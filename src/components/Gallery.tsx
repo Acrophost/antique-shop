@@ -1,4 +1,10 @@
-import React, { FunctionComponent, useState, ForwardRefRenderFunction, ComponentPropsWithoutRef } from 'react';
+import React, {
+    FunctionComponent,
+    useState,
+    ForwardRefRenderFunction,
+    ComponentPropsWithoutRef,
+    RefObject,
+} from 'react';
 
 import Modal from './Modal';
 import Details from './Details';
@@ -18,17 +24,17 @@ interface Antique {
 
 interface AntiqueProps {
     antiques: Antique[];
-    refs: { gallery: React.RefObject<HTMLDivElement> };
+    refs: RefObject<HTMLDivElement>[];
 }
 
 const Gallery: FunctionComponent<AntiqueProps> = (props: AntiqueProps) => {
     const [currentlyHovered, setCurrentHover] = useState(-1);
     const [showModal, setShowModal] = useState(false);
     const [modal, setModal] = useState({ key: -1, img: '', alt: '', name: '', description: '' });
-    props.refs.gallery = React.createRef<HTMLDivElement>();
+    props.refs[3] = React.createRef<HTMLDivElement>();
 
     return (
-        <GalleryEl ref={props.refs.gallery}>
+        <GalleryEl ref={props.refs[3]}>
             <h2 className="gallery__title">Our antiques</h2>
             <svg className="gallery__accent-line" height="100" width="700">
                 <line x1="0" y1="0" x2="800" y2="0" />

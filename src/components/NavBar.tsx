@@ -2,13 +2,7 @@ import React, { ReactElement, Component, RefObject } from 'react';
 import Logo from '../svgs/Logo';
 
 interface LocationProps {
-    refs: {
-        home: RefObject<HTMLDivElement>;
-        about: RefObject<HTMLDivElement>;
-        sales: RefObject<HTMLDivElement>;
-        gallery: RefObject<HTMLDivElement>;
-        contact: RefObject<HTMLDivElement>;
-    };
+    refs: RefObject<HTMLDivElement>[];
 }
 
 interface NavState {
@@ -47,30 +41,30 @@ class NavBar extends Component<LocationProps> {
         const previous = this.state.active;
 
         if (
-            this.props.refs.about &&
-            this.props.refs.about.current &&
-            window.pageYOffset < this.props.refs.about.current.offsetTop - 300
+            this.props.refs[1] &&
+            this.props.refs[1].current &&
+            window.pageYOffset < this.props.refs[1].current.offsetTop - 300
         ) {
             this.setState({ active: 0 });
             window.history.pushState('', 'The Antique Store', '/');
         } else if (
-            this.props.refs.sales &&
-            this.props.refs.sales.current &&
-            window.pageYOffset < this.props.refs.sales.current.offsetTop - 300
+            this.props.refs[2] &&
+            this.props.refs[2].current &&
+            window.pageYOffset < this.props.refs[2].current.offsetTop - 300
         ) {
             this.setState({ active: 1 });
             window.history.pushState('', 'The Antique Store', '/about');
         } else if (
-            this.props.refs.gallery &&
-            this.props.refs.gallery.current &&
-            window.pageYOffset < this.props.refs.gallery.current.offsetTop - 400
+            this.props.refs[3] &&
+            this.props.refs[3].current &&
+            window.pageYOffset < this.props.refs[3].current.offsetTop - 400
         ) {
             this.setState({ active: 2 });
             window.history.pushState('', 'The Antique Store', '/sales');
         } else if (
-            this.props.refs.contact &&
-            this.props.refs.contact.current &&
-            window.pageYOffset < this.props.refs.contact.current.offsetTop - 400
+            this.props.refs[4] &&
+            this.props.refs[4].current &&
+            window.pageYOffset < this.props.refs[4].current.offsetTop - 400
         ) {
             this.setState({ active: 3 });
             window.history.pushState('', 'The Antique Store', '/gallery');
@@ -80,6 +74,17 @@ class NavBar extends Component<LocationProps> {
         }
 
         this.changeActive(previous);
+    }
+
+    scrollToComponent(val: number, name: string): void {
+        if (this.props.refs[val].current && this.props.refs[val]) {
+            this.props.refs[val].current!.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+            });
+
+            window.history.pushState({}, 'The Antique Store', name);
+        }
     }
 
     openSidebar(): void {
@@ -113,13 +118,7 @@ class NavBar extends Component<LocationProps> {
                             className="nav__sidebar-text"
                             data-content="Home"
                             onClick={(): void => {
-                                if (!this.props.refs.home || !this.props.refs.home.current) return;
-                                this.props.refs.home.current.scrollIntoView({
-                                    behavior: 'smooth',
-                                    block: 'start',
-                                });
-                                this.props.refs.home.current.focus();
-                                window.history.pushState({}, 'The Antique Store', '/');
+                                this.scrollToComponent(0, '/');
                             }}
                         >
                             Home
@@ -130,13 +129,7 @@ class NavBar extends Component<LocationProps> {
                             className="nav__sidebar-text"
                             data-content="What do we do?"
                             onClick={(): void => {
-                                if (!this.props.refs.about || !this.props.refs.about.current) return;
-                                this.props.refs.about.current.scrollIntoView({
-                                    behavior: 'smooth',
-                                    block: 'nearest',
-                                });
-                                this.props.refs.about.current.focus();
-                                window.history.pushState({}, 'The Antique Store', '/about');
+                                this.scrollToComponent(1, '/about');
                             }}
                         >
                             What do we do?
@@ -147,13 +140,7 @@ class NavBar extends Component<LocationProps> {
                             className="nav__sidebar-text"
                             data-content="Current discounts"
                             onClick={(): void => {
-                                if (!this.props.refs.sales || !this.props.refs.sales.current) return;
-                                this.props.refs.sales.current.scrollIntoView({
-                                    behavior: 'smooth',
-                                    block: 'start',
-                                });
-                                this.props.refs.sales.current.focus();
-                                window.history.pushState({}, 'The Antique Store', '/sales');
+                                this.scrollToComponent(2, '/sales');
                             }}
                         >
                             Current discounts
@@ -164,13 +151,7 @@ class NavBar extends Component<LocationProps> {
                             className="nav__sidebar-text"
                             data-content="Our antiques"
                             onClick={(): void => {
-                                if (!this.props.refs.gallery || !this.props.refs.gallery.current) return;
-                                this.props.refs.gallery.current.scrollIntoView({
-                                    behavior: 'smooth',
-                                    block: 'start',
-                                });
-                                this.props.refs.gallery.current.focus();
-                                window.history.pushState({}, 'The Antique Store', '/gallery');
+                                this.scrollToComponent(3, '/gallery');
                             }}
                         >
                             Our antiques
@@ -181,13 +162,7 @@ class NavBar extends Component<LocationProps> {
                             className="nav__sidebar-text"
                             data-content="How to get in touch with us?"
                             onClick={(): void => {
-                                if (!this.props.refs.contact || !this.props.refs.contact.current) return;
-                                this.props.refs.contact.current.scrollIntoView({
-                                    behavior: 'smooth',
-                                    block: 'nearest',
-                                });
-                                this.props.refs.contact.current.focus();
-                                window.history.pushState({}, 'The Antique Store', '/contact');
+                                this.scrollToComponent(4, '/contact');
                             }}
                         >
                             How to get in touch with us?
@@ -202,14 +177,7 @@ class NavBar extends Component<LocationProps> {
                 <button
                     className="nav__logo-container"
                     onClick={(): void => {
-                        if (this.props.refs.home && this.props.refs.home.current) {
-                            this.props.refs.home.current.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start',
-                            });
-                            this.props.refs.home.current.focus();
-                            window.history.pushState({}, 'The Antique Store', '/');
-                        }
+                        this.scrollToComponent(0, '/');
                     }}
                 >
                     <Logo className="nav__logo" />
