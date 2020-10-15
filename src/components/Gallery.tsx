@@ -26,6 +26,7 @@ interface Antique {
 interface AntiqueProps {
     antiques: Antique[];
     refs: RefObject<HTMLDivElement>[];
+    id: string;
 }
 
 const Gallery: FunctionComponent<AntiqueProps> = (props: AntiqueProps) => {
@@ -67,7 +68,7 @@ const Gallery: FunctionComponent<AntiqueProps> = (props: AntiqueProps) => {
     }, []);
 
     return (
-        <GalleryEl ref={props.refs[3]}>
+        <GalleryEl ref={props.refs[3]} id={props.id}>
             <h2 className="gallery__title">Our antiques</h2>
             <svg className="gallery__accent-line" height="100" width="700">
                 <line x1="0" y1="0" x2="800" y2="0" />

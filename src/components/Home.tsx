@@ -9,13 +9,14 @@ const HomeEl = React.forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>
 
 interface RefProps {
     refs: RefObject<HTMLDivElement>[];
+    id: string;
 }
 
 const Home: FunctionComponent<RefProps> = (props: RefProps) => {
     props.refs[0] = React.createRef<HTMLDivElement>();
 
     return (
-        <HomeEl ref={props.refs[0]}>
+        <HomeEl ref={props.refs[0]} id={props.id}>
             <div className="home__title-container">
                 <svg className="home__accent-line" height="100" width="700">
                     <line x1="0" y1="0" x2="800" y2="0" />

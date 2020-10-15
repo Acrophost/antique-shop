@@ -14,6 +14,7 @@ const AboutEl = React.forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>
 
 interface RefProps {
     refs: RefObject<HTMLDivElement>[];
+    id: string;
 }
 
 const About: FunctionComponent<RefProps> = (props: RefProps) => {
@@ -45,7 +46,7 @@ const About: FunctionComponent<RefProps> = (props: RefProps) => {
     }, []);
 
     return (
-        <AboutEl ref={props.refs[1]}>
+        <AboutEl ref={props.refs[1]} id={props.id}>
             <div className="about__animatedBox">
                 <div className="about__title-container">
                     <h2 className="about__title">What do we do?</h2>

@@ -1,4 +1,6 @@
 import React, { ReactElement, Component, RefObject } from 'react';
+import { Link, animateScroll as scroll } from 'react-scroll';
+
 import Logo from '../svgs/Logo';
 
 interface LocationProps {
@@ -8,7 +10,6 @@ interface LocationProps {
 interface NavState {
     menuClass: string;
     sidebarClass: string;
-    active: number;
 }
 
 class NavBar extends Component<LocationProps> {
@@ -20,71 +21,9 @@ class NavBar extends Component<LocationProps> {
         this.state = {
             menuClass: 'nav__menu-button',
             sidebarClass: 'nav__sidebar',
-            active: 0,
         };
 
         this.openSidebar = this.openSidebar.bind(this);
-        this.checkLocation = this.checkLocation.bind(this);
-        this.setActive = this.setActive.bind(this);
-        this.changeActive = this.changeActive.bind(this);
-    }
-
-    componentDidMount(): void {
-        window.onscroll = (): void => {
-            window.addEventListener('scroll', this.checkLocation);
-        };
-
-        this.setActive();
-    }
-
-    checkLocation(): void {
-        const previous = this.state.active;
-
-        if (
-            this.props.refs[1] &&
-            this.props.refs[1].current &&
-            window.pageYOffset < this.props.refs[1].current.offsetTop - 300
-        ) {
-            this.setState({ active: 0 });
-            window.history.pushState('', 'The Antique Store', '/');
-        } else if (
-            this.props.refs[2] &&
-            this.props.refs[2].current &&
-            window.pageYOffset < this.props.refs[2].current.offsetTop - 300
-        ) {
-            this.setState({ active: 1 });
-            window.history.pushState('', 'The Antique Store', '/about');
-        } else if (
-            this.props.refs[3] &&
-            this.props.refs[3].current &&
-            window.pageYOffset < this.props.refs[3].current.offsetTop - 400
-        ) {
-            this.setState({ active: 2 });
-            window.history.pushState('', 'The Antique Store', '/sales');
-        } else if (
-            this.props.refs[4] &&
-            this.props.refs[4].current &&
-            window.pageYOffset < this.props.refs[4].current.offsetTop - 400
-        ) {
-            this.setState({ active: 3 });
-            window.history.pushState('', 'The Antique Store', '/gallery');
-        } else {
-            this.setState({ active: 4 });
-            window.history.pushState('', 'The Antique Store', '/contact');
-        }
-
-        this.changeActive(previous);
-    }
-
-    scrollToComponent(val: number, name: string): void {
-        if (this.props.refs[val].current && this.props.refs[val]) {
-            this.props.refs[val].current!.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start',
-            });
-
-            window.history.pushState({}, 'The Antique Store', name);
-        }
     }
 
     openSidebar(): void {
@@ -98,75 +37,71 @@ class NavBar extends Component<LocationProps> {
         }
     }
 
-    changeActive(previous: number): void {
-        const buttons = document.getElementsByClassName('nav__sidebar-text');
-        buttons[previous].classList.remove('active');
-        buttons[this.state.active].classList.add('active');
-    }
-
-    setActive(): void {
-        const buttons = document.getElementsByClassName('nav__sidebar-text');
-        buttons[this.state.active].classList.add('active');
-    }
-
     render(): ReactElement {
         return (
             <header className="nav-bar">
                 <ul className={this.state.sidebarClass}>
                     <li className="nav__sidebar-button">
-                        <button
+                        <Link
                             className="nav__sidebar-text"
                             data-content="Home"
-                            onClick={(): void => {
-                                this.scrollToComponent(0, '/');
-                            }}
+                            to="home-module"
+                            duration={3000}
+                            smooth={true}
+                            spy={true}
                         >
                             Home
-                        </button>
+                        </Link>
                     </li>
                     <li className="nav__sidebar-button">
-                        <button
+                        <Link
                             className="nav__sidebar-text"
                             data-content="What do we do?"
-                            onClick={(): void => {
-                                this.scrollToComponent(1, '/about');
-                            }}
+                            to="about-module"
+                            duration={3000}
+                            smooth={true}
+                            spy={true}
                         >
                             What do we do?
-                        </button>
+                        </Link>
                     </li>
                     <li className="nav__sidebar-button">
-                        <button
+                        <Link
                             className="nav__sidebar-text"
                             data-content="Current discounts"
-                            onClick={(): void => {
-                                this.scrollToComponent(2, '/sales');
-                            }}
+                            to="sales-module"
+                            duration={1000}
+                            smooth={true}
+                            spy={true}
                         >
                             Current discounts
-                        </button>
+                        </Link>
                     </li>
                     <li className="nav__sidebar-button">
-                        <button
+                        <Link
                             className="nav__sidebar-text"
                             data-content="Our antiques"
-                            onClick={(): void => {
-                                this.scrollToComponent(3, '/gallery');
-                            }}
+                            to="gallery-module"
+                            duration={1000}
+                            offset={20}
+                            smooth={true}
+                            spy={true}
                         >
                             Our antiques
-                        </button>
+                        </Link>
                     </li>
                     <li className="nav__sidebar-button">
-                        <button
+                        <Link
                             className="nav__sidebar-text"
                             data-content="How to get in touch with us?"
-                            onClick={(): void => {
-                                this.scrollToComponent(4, '/contact');
-                            }}
+                            to="contact-module"
+                            duration={1000}
+                            smooth={true}
+                            spy={true}
+                            offset={50}
                         >
                             How to get in touch with us?
-                        </button>
+                        </Link>
                     </li>
                 </ul>
                 <button className={this.state.menuClass} onClick={this.openSidebar}>
@@ -174,14 +109,9 @@ class NavBar extends Component<LocationProps> {
                     <div className="nav__hamburger-menu"></div>
                 </button>
 
-                <button
-                    className="nav__logo-container"
-                    onClick={(): void => {
-                        this.scrollToComponent(0, '/');
-                    }}
-                >
+                <Link className="nav__logo-container" to="home-module" duration={1000} spy={true} smooth={true}>
                     <Logo className="nav__logo" />
-                </button>
+                </Link>
             </header>
         );
     }

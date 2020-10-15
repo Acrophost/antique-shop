@@ -37,11 +37,11 @@ class App extends Component {
             return (
                 <div className="App">
                     <NavBar refs={this.state.refs} />
-                    <Home refs={this.state.refs} />
-                    <About refs={this.state.refs} />
-                    <Sales refs={this.state.refs} />
-                    <Gallery antiques={Antiques} refs={this.state.refs} />
-                    <Contact refs={this.state.refs} />
+                    <Home refs={this.state.refs} id="home-module" />
+                    <About refs={this.state.refs} id="about-module" />
+                    <Sales refs={this.state.refs} id="sales-module" />
+                    <Gallery antiques={Antiques} refs={this.state.refs} id="gallery-module" />
+                    <Contact refs={this.state.refs} id="contact-module" />
                 </div>
             );
         }

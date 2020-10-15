@@ -10,6 +10,7 @@ const ContactEl = React.forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div
 
 interface RefProps {
     refs: RefObject<HTMLDivElement>[];
+    id: string;
 }
 
 const Contact: FunctionComponent<RefProps> = (props: RefProps) => {
@@ -18,7 +19,7 @@ const Contact: FunctionComponent<RefProps> = (props: RefProps) => {
     props.refs[4] = React.createRef<HTMLDivElement>();
 
     return (
-        <ContactEl ref={props.refs[4]}>
+        <ContactEl ref={props.refs[4]} id={props.id}>
             <h2 className="contact__title">How to get in touch with us?</h2>
             <svg className="contact__accent-line" height="100" width="700">
                 <line x1="0" y1="0" x2="800" y2="0" />

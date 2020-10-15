@@ -258,8 +258,11 @@
     background-color: scale-color($base-black, $alpha: -30%);
     width: 4rem;
     height: 4rem;
-    margin-left: 2rem;
     right: 2rem;
+    top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     @media (max-width: 955px), (max-width: 1025px) and (min-height: 1365px) {
         width: 8rem;

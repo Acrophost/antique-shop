@@ -18,6 +18,7 @@ const SalesEl = React.forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>
 
 interface RefProps {
     refs: RefObject<HTMLDivElement>[];
+    id: string;
 }
 
 const Sale: FunctionComponent<RefProps> = (props: RefProps) => {
@@ -45,7 +46,7 @@ const Sale: FunctionComponent<RefProps> = (props: RefProps) => {
     }, []);
 
     return (
-        <SalesEl ref={props.refs[2]}>
+        <SalesEl ref={props.refs[2]} id={props.id}>
             <div className="animatedBackground">
                 <div className="img-bg">
                     <h2 className="sale__title">Current Sales</h2>
