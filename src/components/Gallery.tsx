@@ -4,6 +4,7 @@ import React, {
     ForwardRefRenderFunction,
     ComponentPropsWithoutRef,
     RefObject,
+    useEffect,
 } from 'react';
 
 import Modal from './Modal';
@@ -33,45 +34,84 @@ const Gallery: FunctionComponent<AntiqueProps> = (props: AntiqueProps) => {
     const [modal, setModal] = useState({ key: -1, img: '', alt: '', name: '', description: '' });
     props.refs[3] = React.createRef<HTMLDivElement>();
 
+    useEffect(() => {
+        const animateGallery = (): void => {
+            const title = document.getElementsByClassName('gallery__title')[0];
+            const boxContainer = document.getElementsByClassName('gallery__animatedBox')[0];
+            const titleLine = document.getElementsByClassName('gallery__accent-line')[0];
+
+            if (!props.refs[3].current || !title || !boxContainer) return;
+
+            if (window.scrollY > props.refs[3].current.getBoundingClientRect().top + 50) {
+                if (title.classList.contains('out')) {
+                    title.classList.remove('out');
+                    titleLine.classList.remove('out');
+                }
+                boxContainer.classList.add('galleryBox-in');
+            }
+            if (
+                window.scrollY < props.refs[3].current.getBoundingClientRect().top + 50 ||
+                window.scrollY > props.refs[3].current.getBoundingClientRect().bottom + 3000
+            ) {
+                if (!title.classList.contains('out')) {
+                    title.classList.add('out');
+                    titleLine.classList.add('out');
+                }
+                boxContainer.classList.remove('galleryBox-in');
+            }
+        };
+        window.addEventListener('scroll', animateGallery);
+        return (): void => {
+            window.removeEventListener('scroll', animateGallery);
+        };
+    }, []);
+
     return (
         <GalleryEl ref={props.refs[3]}>
             <h2 className="gallery__title">Our antiques</h2>
             <svg className="gallery__accent-line" height="100" width="700">
                 <line x1="0" y1="0" x2="800" y2="0" />
             </svg>
-            <div className="gallery__images-container">
-                {props.antiques.map((val, i) => {
-                    return (
-                        <button
-                            className="gallery__button"
-                            key={i}
-                            onMouseEnter={(): void => setCurrentHover(i)}
-                            onMouseLeave={(): void => setCurrentHover(-1)}
-                            onClick={(): void => {
-                                setShowModal(true);
-                                setModal({
-                                    key: i,
-                                    img: val.image,
-                                    alt: val.alt,
-                                    name: val.name,
-                                    description: val.description,
-                                });
+            <div className="gallery__animatedBox">
+                <div className="gallery__images-container">
+                    {props.antiques.map((val, i) => {
+                        return (
+                            <button
+                                className="gallery__button"
+                                key={i}
+                                onMouseEnter={(): void => setCurrentHover(i)}
+                                onMouseLeave={(): void => setCurrentHover(-1)}
+                                onClick={(): void => {
+                                    setShowModal(true);
+                                    setModal({
+                                        key: i,
+                                        img: val.image,
+                                        alt: val.alt,
+                                        name: val.name,
+                                        description: val.description,
+                                    });
 
-                                console.log(showModal);
-                            }}
-                        >
-                            <img src={val.image} alt={val.alt} className="gallery__img" />
-                            {currentlyHovered === i && (
-                                <div className="gallery__button-overlay">
-                                    <div className="gallery__button-text">
-                                        <h3>{val.name}</h3>
-                                        <p>See details</p>
+                                    console.log(showModal);
+                                }}
+                            >
+                                <img src={val.image} alt={val.alt} className="gallery__img" />
+                                {currentlyHovered === i && (
+                                    <div className="gallery__button-overlay">
+                                        <div className="gallery__button-text">
+                                            <h3>{val.name}</h3>
+                                            <p>See details</p>
+                                        </div>
                                     </div>
-                                </div>
-                            )}
-                        </button>
-                    );
-                })}
+                                )}
+                            </button>
+                        );
+                    })}
+                </div>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
             {showModal ? (
                 <Modal>

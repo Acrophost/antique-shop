@@ -21,7 +21,7 @@ const About: FunctionComponent<RefProps> = (props: RefProps) => {
 
     useEffect(() => {
         const animateAbout = (): void => {
-            const titleContainer = document.getElementsByClassName('animatedBox')[0];
+            const titleContainer = document.getElementsByClassName('about__animatedBox')[0];
             const text = document.getElementsByClassName('about__text-container')[0];
 
             if (!props.refs[1].current || !titleContainer) return;
@@ -46,7 +46,7 @@ const About: FunctionComponent<RefProps> = (props: RefProps) => {
 
     return (
         <AboutEl ref={props.refs[1]}>
-            <div className="animatedBox">
+            <div className="about__animatedBox">
                 <div className="about__title-container">
                     <h2 className="about__title">What do we do?</h2>
                     <svg className="about__accent-line" height="100" width="700">

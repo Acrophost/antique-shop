@@ -36,24 +36,7 @@
     }
 }
 
-@keyframes slide-in-left {
-    from {
-        transform: translateX(15rem);
-        opacity: 0;
-    }
-
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slide-in-right {
-    from {
-        transform: translateX(-15rem);
-        opacity: 0;
-    }
-
+@keyframes slide-in {
     to {
         transform: translateX(0);
         opacity: 1;
@@ -61,11 +44,6 @@
 }
 
 @keyframes slide-out-right {
-    from {
-        transform: translateX(0);
-        opacity: 1;
-    }
-
     to {
         transform: translateX(15rem);
         opacity: 0;
@@ -107,5 +85,21 @@
     to {
         top: 100%;
         bottom: 0;
+    }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+}
+
+@keyframes extend-height {
+    from {
+        height: 0;
+    }
+
+    to {
+        opacity: 1;
     }
 }
