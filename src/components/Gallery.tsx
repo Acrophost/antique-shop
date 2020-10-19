@@ -39,14 +39,14 @@ const Gallery: FunctionComponent<AntiqueProps> = (props: AntiqueProps) => {
         const animateGallery = (): void => {
             const title = document.getElementsByClassName('gallery__title')[0];
             const boxContainer = document.getElementsByClassName('gallery__animatedBox')[0];
-            const titleLine = document.getElementsByClassName('gallery__accent-line')[0];
+            const line = document.getElementsByClassName('gallery__accent-line')[0];
 
             if (!props.refs[3].current || !title || !boxContainer) return;
 
             if (window.scrollY > props.refs[3].current.getBoundingClientRect().top + 50) {
                 if (title.classList.contains('out')) {
                     title.classList.remove('out');
-                    titleLine.classList.remove('out');
+                    line.classList.remove('out');
                 }
                 boxContainer.classList.add('galleryBox-in');
             }
@@ -56,7 +56,7 @@ const Gallery: FunctionComponent<AntiqueProps> = (props: AntiqueProps) => {
             ) {
                 if (!title.classList.contains('out')) {
                     title.classList.add('out');
-                    titleLine.classList.add('out');
+                    line.classList.add('out');
                 }
                 boxContainer.classList.remove('galleryBox-in');
             }

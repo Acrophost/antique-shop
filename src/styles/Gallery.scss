@@ -22,8 +22,12 @@
     margin-top: -2rem;
     width: 20rem;
     opacity: 0;
-    transform: translateX(-4rem);
-    animation: slide-in 1s forwards ease-in 0.5s;
+    animation: widen 1s forwards 2s;
+    transform-origin: center top;
+
+    &.out {
+        animation: narrow 1s forwards;
+    }
     & > line {
         stroke: $accent;
         stroke-width: 8;

@@ -123,8 +123,8 @@
     right: 0;
     left: auto;
     width: 20vw;
-    transform: translateX(15rem);
-    animation: slide-in 0.5s ease-in 1s forwards;
+    animation: widen 1s forwards 1s;
+    transform-origin: center top;
 
     & > line {
         stroke: $deeper-accent;

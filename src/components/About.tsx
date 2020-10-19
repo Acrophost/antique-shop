@@ -24,12 +24,14 @@ const About: FunctionComponent<RefProps> = (props: RefProps) => {
         const animateAbout = (): void => {
             const titleContainer = document.getElementsByClassName('about__animatedBox')[0];
             const text = document.getElementsByClassName('about__text-container')[0];
+            const line = document.getElementsByClassName('about__accent-line')[0];
 
             if (!props.refs[1].current || !titleContainer) return;
 
             if (window.scrollY > props.refs[1].current.getBoundingClientRect().top + 200) {
                 titleContainer.classList.add('animatedBox-in');
                 text.classList.remove('out');
+                line.classList.remove('out');
             }
             if (
                 window.scrollY < props.refs[1].current.getBoundingClientRect().top ||
@@ -37,6 +39,7 @@ const About: FunctionComponent<RefProps> = (props: RefProps) => {
             ) {
                 titleContainer.classList.remove('animatedBox-in');
                 text.classList.add('out');
+                line.classList.add('out');
             }
         };
         window.addEventListener('scroll', animateAbout);
