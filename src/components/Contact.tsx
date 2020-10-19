@@ -1,4 +1,10 @@
-import React, { FunctionComponent, ForwardRefRenderFunction, ComponentPropsWithoutRef, RefObject } from 'react';
+import React, {
+    FunctionComponent,
+    ForwardRefRenderFunction,
+    ComponentPropsWithoutRef,
+    RefObject,
+    useEffect,
+} from 'react';
 
 import MapContainer from './MapContainer';
 
@@ -8,15 +14,49 @@ const fwRef: ForwardRefRenderFunction<HTMLDivElement, ComponentPropsWithoutRef<'
 
 const ContactEl = React.forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(fwRef);
 
+interface Location {
+    address: string;
+    lat: number;
+    lng: number;
+}
+
 interface RefProps {
     refs: RefObject<HTMLDivElement>[];
     id: string;
+    location: Location;
+    zoomLevel: number;
 }
 
 const Contact: FunctionComponent<RefProps> = (props: RefProps) => {
-    const location = { address: 'The Antique House', lat: 53.224, lng: -4.197 };
-    const zoomLevel = 14;
     props.refs[4] = React.createRef<HTMLDivElement>();
+
+    useEffect(() => {
+        const animateContact = (): void => {
+            const mapContainer = document.getElementsByClassName('contact__animated-box')[0];
+            const title = document.getElementsByClassName('contact__title')[0];
+            const info = document.getElementsByClassName('contact__info')[0];
+            const line = document.getElementsByClassName('contact__accent-line')[0];
+
+            if (!props.refs[3].current || !mapContainer) return;
+
+            if (window.scrollY > props.refs[3].current.getBoundingClientRect().bottom + 3000) {
+                mapContainer.classList.add('contactBox-in');
+                title.classList.remove('out');
+                info.classList.remove('out');
+                line.classList.remove('out');
+            }
+            if (window.scrollY < props.refs[3].current.getBoundingClientRect().bottom + 3000) {
+                mapContainer.classList.remove('contactBox-in');
+                title.classList.add('out');
+                info.classList.add('out');
+                line.classList.add('out');
+            }
+        };
+        window.addEventListener('scroll', animateContact);
+        return (): void => {
+            window.removeEventListener('scroll', animateContact);
+        };
+    }, []);
 
     return (
         <ContactEl ref={props.refs[4]} id={props.id}>
@@ -47,7 +87,13 @@ const Contact: FunctionComponent<RefProps> = (props: RefProps) => {
                     </div>
                 </div>
                 <div id="map">
-                    <MapContainer location={location} zoomLevel={zoomLevel} />
+                    <div className="contact__animated-box">
+                        <MapContainer location={props.location} zoomLevel={props.zoomLevel} />
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
             </div>
         </ContactEl>

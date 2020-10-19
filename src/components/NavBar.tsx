@@ -1,5 +1,5 @@
 import React, { ReactElement, Component, RefObject } from 'react';
-import { Link, animateScroll as scroll } from 'react-scroll';
+import { Link } from 'react-scroll';
 
 import Logo from '../svgs/Logo';
 

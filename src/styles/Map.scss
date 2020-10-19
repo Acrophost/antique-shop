@@ -1,11 +1,9 @@
 .google-map {
     width: calc(50vw - 5rem);
     height: 65vh;
-    margin-top: -2rem;
 
     @media (max-width: 800px), (max-width: 1025px) and (min-height: 1365px) {
         width: 90vw;
-        margin-top: 2rem;
         height: 45vh;
     }
 }

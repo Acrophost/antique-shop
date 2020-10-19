@@ -1,4 +1,5 @@
 import React, { Component, ReactElement } from 'react';
+import { animateScroll as scroll } from 'react-scroll';
 
 import './styles/App.scss';
 
@@ -22,6 +23,9 @@ class App extends Component {
             React.createRef<HTMLDivElement>(),
             React.createRef<HTMLDivElement>(),
         ],
+        ids: ['home-module', 'about-module', 'sales-module', 'gallery-module', 'contact-module'],
+        location: { address: 'The Antique House', lat: 53.224, lng: -4.197 },
+        zoomLevel: 14,
     };
 
     componentDidMount(): void {
@@ -41,7 +45,12 @@ class App extends Component {
                     <About refs={this.state.refs} id="about-module" />
                     <Sales refs={this.state.refs} id="sales-module" />
                     <Gallery antiques={Antiques} refs={this.state.refs} id="gallery-module" />
-                    <Contact refs={this.state.refs} id="contact-module" />
+                    <Contact
+                        refs={this.state.refs}
+                        id="contact-module"
+                        location={this.state.location}
+                        zoomLevel={this.state.zoomLevel}
+                    />
                 </div>
             );
         }
