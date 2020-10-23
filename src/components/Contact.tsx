@@ -37,15 +37,17 @@ const Contact: FunctionComponent<RefProps> = (props: RefProps) => {
             const info = document.getElementsByClassName('contact__info')[0];
             const line = document.getElementsByClassName('contact__accent-line')[0];
 
-            if (!props.refs[3].current || !mapContainer) return;
+            if (!props.refs[4].current || !mapContainer) return;
 
-            if (window.scrollY > props.refs[3].current.getBoundingClientRect().bottom + 3000) {
+            const top = props.refs[4].current.getBoundingClientRect().top;
+
+            if (top <= 700 && !mapContainer.classList.contains('contactBox-in')) {
                 mapContainer.classList.add('contactBox-in');
                 title.classList.remove('out');
                 info.classList.remove('out');
                 line.classList.remove('out');
             }
-            if (window.scrollY < props.refs[3].current.getBoundingClientRect().bottom + 3000) {
+            if (top > 700 && mapContainer.classList.contains('contactBox-in')) {
                 mapContainer.classList.remove('contactBox-in');
                 title.classList.add('out');
                 info.classList.add('out');

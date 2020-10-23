@@ -43,7 +43,7 @@ const Sale: FunctionComponent<RefProps> = (props: RefProps) => {
         return (): void => {
             window.removeEventListener('scroll', animateSale);
         };
-    }, []);
+    }, [props.refs]);
 
     return (
         <SalesEl ref={props.refs[2]} id={props.id}>

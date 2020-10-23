@@ -1,5 +1,4 @@
 import React, { Component, ReactElement } from 'react';
-import { animateScroll as scroll } from 'react-scroll';
 
 import './styles/App.scss';
 
@@ -26,6 +25,10 @@ class App extends Component {
         ids: ['home-module', 'about-module', 'sales-module', 'gallery-module', 'contact-module'],
         location: { address: 'The Antique House', lat: 53.224, lng: -4.197 },
         zoomLevel: 14,
+        prevScroll: 0,
+        currentComponent: 0,
+        scrolling: false,
+        throttleTime: 100,
     };
 
     componentDidMount(): void {

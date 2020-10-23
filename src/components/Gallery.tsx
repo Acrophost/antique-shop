@@ -43,21 +43,17 @@ const Gallery: FunctionComponent<AntiqueProps> = (props: AntiqueProps) => {
 
             if (!props.refs[3].current || !title || !boxContainer) return;
 
-            if (window.scrollY > props.refs[3].current.getBoundingClientRect().top + 50) {
-                if (title.classList.contains('out')) {
-                    title.classList.remove('out');
-                    line.classList.remove('out');
-                }
+            const top = props.refs[3].current.getBoundingClientRect().top;
+            const bottom = props.refs[3].current.getBoundingClientRect().bottom;
+
+            if (top <= 600 && bottom >= -50 && !boxContainer.classList.contains('galleryBox-in')) {
+                title.classList.remove('out');
+                line.classList.remove('out');
                 boxContainer.classList.add('galleryBox-in');
             }
-            if (
-                window.scrollY < props.refs[3].current.getBoundingClientRect().top + 50 ||
-                window.scrollY > props.refs[3].current.getBoundingClientRect().bottom + 3000
-            ) {
-                if (!title.classList.contains('out')) {
-                    title.classList.add('out');
-                    line.classList.add('out');
-                }
+            if ((top > 600 || bottom < -50) && boxContainer.classList.contains('galleryBox-in')) {
+                title.classList.add('out');
+                line.classList.add('out');
                 boxContainer.classList.remove('galleryBox-in');
             }
         };

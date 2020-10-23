@@ -27,16 +27,15 @@ const About: FunctionComponent<RefProps> = (props: RefProps) => {
             const line = document.getElementsByClassName('about__accent-line')[0];
 
             if (!props.refs[1].current || !titleContainer) return;
+            const top = props.refs[1].current.getBoundingClientRect().top;
+            const bottom = props.refs[1].current.getBoundingClientRect().bottom;
 
-            if (window.scrollY > props.refs[1].current.getBoundingClientRect().top + 200) {
+            if (top <= 300 && bottom >= 100 && !titleContainer.classList.contains('animatedBox-in')) {
                 titleContainer.classList.add('animatedBox-in');
                 text.classList.remove('out');
                 line.classList.remove('out');
             }
-            if (
-                window.scrollY < props.refs[1].current.getBoundingClientRect().top ||
-                window.scrollY > props.refs[1].current.getBoundingClientRect().bottom + 1700
-            ) {
+            if ((top > 300 || bottom < 100) && titleContainer.classList.contains('animatedBox-in')) {
                 titleContainer.classList.remove('animatedBox-in');
                 text.classList.add('out');
                 line.classList.add('out');
