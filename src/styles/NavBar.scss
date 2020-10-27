@@ -1,7 +1,7 @@
 .nav-bar {
     position: fixed;
     padding: 2rem;
-    width: 100%;
+    width: 100vw;
     z-index: 5;
 }
 
@@ -16,7 +16,10 @@
     padding-top: 6rem;
     width: 30rem;
     height: 100%;
-    background: linear-gradient(scale-color($base-black, $alpha: -30%), scale-color($primary-color, $alpha: -70%));
+    background: linear-gradient(
+        scale-color($base-black, $alpha: -10%) 20%,
+        scale-color($primary-color, $alpha: -10%) 90%
+    );
 
     &.open {
         display: flex;

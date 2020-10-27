@@ -1,6 +1,6 @@
 .contact {
     height: 115vh;
-    width: 100%;
+    width: 100vw;
     padding-top: 10vh;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .contact__info {
-    width: 50%;
+    width: calc(50% - 5rem);
     margin-left: 5rem;
     padding-left: 1rem;
     color: $base-white;
@@ -70,15 +70,15 @@
     margin-left: -5rem;
 
     @media (max-width: 800px), (max-width: 1025px) and (min-height: 1365px) {
-        width: 95vw;
+        width: 80vw;
         height: 45vh;
-        margin: 0 2.5vw;
     }
 }
 
 .contact__phone-mail,
 .contact__adress,
-.contact__hours {
+.contact__hours,
+.contact__social {
     font-size: 1.4rem;
     margin-bottom: 4rem;
 
@@ -159,9 +159,11 @@
     }
 }
 
-.contact__info {
+.contact__info,
+.contact__social {
     p,
     span {
+        max-inline-size: 80vw;
         opacity: 0;
         transform: translateX(-35rem);
         animation: slide-in 1s forwards ease-in 1.1s;
@@ -172,5 +174,43 @@
         span {
             animation: slide-out-right 1s forwards 1.1s;
         }
+    }
+}
+
+.contact__social-icons {
+    margin-top: 0.5rem;
+    opacity: 0;
+    transform: translateX(-35rem);
+    animation: slide-in 1s forwards ease-in 1.1s;
+
+    &.out {
+        animation: slide-out-right 1s forwards 1.1s;
+    }
+
+    a {
+        color: $base-white;
+        text-decoration: none;
+        font-size: 2.5rem;
+        margin: 0.3rem;
+
+        &:hover {
+            background: -webkit-linear-gradient($accent, $deeper-accent);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @media (max-width: 1025px) {
+            font-size: 2rem;
+        }
+
+        @media (max-width: 800px), (max-width: 1025px) and (min-height: 1365px) {
+            font-size: 6rem;
+            margin: 1rem;
+        }
+    }
+
+    @media (max-width: 800px), (max-width: 1025px) and (min-height: 1365px) {
+        margin-bottom: 10rem;
     }
 }

@@ -15,22 +15,22 @@ const HomeBackground: FunctionComponent<HTMLAttribute> = (props: HTMLAttribute) 
 
     const [furnitureY, setFurnitureY] = useState(101.5);
 
+    const scrollFurniture = (): void => {
+        const scrollChange = window.scrollY * 2;
+
+        if (!props['home-height'].current) return;
+        if (window.scrollY > 0) {
+            setS1([s1[0] - scrollChange, s1[1] + scrollChange]);
+            setS2([s2[0] - scrollChange, s2[1] + scrollChange]);
+            setS3([s3[0] - scrollChange, s3[1] + scrollChange]);
+            setS4([s4[0] - scrollChange, s4[1] + scrollChange]);
+            setS5([s5[0] - scrollChange, s5[1] + scrollChange]);
+            setS6([s6[0] - scrollChange, s6[1] + scrollChange]);
+            setFurnitureY(furnitureY - scrollChange);
+        }
+    };
+
     useEffect(() => {
-        const scrollFurniture = (): void => {
-            const scrollChange = window.scrollY * 2;
-
-            if (!props['home-height'].current) return;
-            if (window.scrollY <= props['home-height'].current.getBoundingClientRect().bottom) {
-                setS1([s1[0] - scrollChange, s1[1] + scrollChange]);
-                setS2([s2[0] - scrollChange, s2[1] + scrollChange]);
-                setS3([s3[0] - scrollChange, s3[1] + scrollChange]);
-                setS4([s4[0] - scrollChange, s4[1] + scrollChange]);
-                setS5([s5[0] - scrollChange, s5[1] + scrollChange]);
-                setS6([s6[0] - scrollChange, s6[1] + scrollChange]);
-                setFurnitureY(furnitureY - scrollChange);
-            }
-        };
-
         window.addEventListener('scroll', scrollFurniture);
         return (): void => {
             window.removeEventListener('scroll', scrollFurniture);

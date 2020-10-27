@@ -30,12 +30,12 @@ const About: FunctionComponent<RefProps> = (props: RefProps) => {
             const top = props.refs[1].current.getBoundingClientRect().top;
             const bottom = props.refs[1].current.getBoundingClientRect().bottom;
 
-            if (top <= 300 && bottom >= 100 && !titleContainer.classList.contains('animatedBox-in')) {
+            if (top <= 800 && bottom >= -100 && !titleContainer.classList.contains('animatedBox-in')) {
                 titleContainer.classList.add('animatedBox-in');
                 text.classList.remove('out');
                 line.classList.remove('out');
             }
-            if ((top > 300 || bottom < 100) && titleContainer.classList.contains('animatedBox-in')) {
+            if ((top > 800 || bottom < -100) && titleContainer.classList.contains('animatedBox-in')) {
                 titleContainer.classList.remove('animatedBox-in');
                 text.classList.add('out');
                 line.classList.add('out');

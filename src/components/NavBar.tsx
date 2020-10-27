@@ -109,7 +109,7 @@ class NavBar extends Component<LocationProps> {
                     <div className="nav__hamburger-menu"></div>
                 </button>
 
-                <Link className="nav__logo-container" to="home-module" duration={1000} spy={true} smooth={true}>
+                <Link className="nav__logo-container" to="home-module" duration={1000} smooth={true}>
                     <Logo className="nav__logo" />
                 </Link>
             </header>

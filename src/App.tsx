@@ -9,7 +9,6 @@ import About from './components/About';
 import Sales from './components/Sale';
 import Gallery from './components/Gallery';
 import Contact from './components/Contact';
-
 import Antiques from './data/Antiques';
 
 class App extends Component {
@@ -25,10 +24,6 @@ class App extends Component {
         ids: ['home-module', 'about-module', 'sales-module', 'gallery-module', 'contact-module'],
         location: { address: 'The Antique House', lat: 53.224, lng: -4.197 },
         zoomLevel: 14,
-        prevScroll: 0,
-        currentComponent: 0,
-        scrolling: false,
-        throttleTime: 100,
     };
 
     componentDidMount(): void {

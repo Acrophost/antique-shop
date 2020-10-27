@@ -7,13 +7,17 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    overflow-x: hidden;
+}
+
 body {
     margin: 0;
     padding: 0;
     background-color: $base-black;
     color: $primary-color;
     font-family: $regular-font;
-    overflow-x: hidden;
 }
 
 h1,

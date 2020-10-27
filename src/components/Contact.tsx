@@ -36,6 +36,7 @@ const Contact: FunctionComponent<RefProps> = (props: RefProps) => {
             const title = document.getElementsByClassName('contact__title')[0];
             const info = document.getElementsByClassName('contact__info')[0];
             const line = document.getElementsByClassName('contact__accent-line')[0];
+            const icons = document.getElementsByClassName('contact__social-icons')[0];
 
             if (!props.refs[4].current || !mapContainer) return;
 
@@ -46,12 +47,14 @@ const Contact: FunctionComponent<RefProps> = (props: RefProps) => {
                 title.classList.remove('out');
                 info.classList.remove('out');
                 line.classList.remove('out');
+                icons.classList.remove('out');
             }
             if (top > 700 && mapContainer.classList.contains('contactBox-in')) {
                 mapContainer.classList.remove('contactBox-in');
                 title.classList.add('out');
                 info.classList.add('out');
                 line.classList.add('out');
+                icons.classList.add('out');
             }
         };
         window.addEventListener('scroll', animateContact);
@@ -76,6 +79,7 @@ const Contact: FunctionComponent<RefProps> = (props: RefProps) => {
                             <span>Or send us an email</span>: thisisanemail@mail.com
                         </p>
                     </div>
+
                     <div className="contact__adress">
                         <span>Our Address:</span>
                         <p>SomeStr 12</p>
@@ -86,6 +90,35 @@ const Contact: FunctionComponent<RefProps> = (props: RefProps) => {
                         <p>Monday - Friday: 00:00 - 00:00</p>
                         <p>Saturday: 00:00 - 00:00</p>
                         <p>Sunday: 00:00 - 00:00</p>
+                    </div>
+                    <div className="contact__social">
+                        <span>Also, check out our social media!</span>
+                        <div className="contact__social-icons">
+                            <a
+                                href="https://www.facebook.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="fa fa-facebook"
+                            />
+                            <a
+                                href="https://twitter.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="fa fa-twitter"
+                            />
+                            <a
+                                href="http://instagram.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="fa fa-instagram"
+                            />
+                            <a
+                                href="https://www.pinterest.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="fa fa-pinterest"
+                            />
+                        </div>
                     </div>
                 </div>
                 <div id="map">
