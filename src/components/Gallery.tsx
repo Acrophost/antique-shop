@@ -87,8 +87,6 @@ const Gallery: FunctionComponent<AntiqueProps> = (props: AntiqueProps) => {
                                         name: val.name,
                                         description: val.description,
                                     });
-
-                                    console.log(showModal);
                                 }}
                             >
                                 <img src={val.image} alt={val.alt} className="gallery__img" />

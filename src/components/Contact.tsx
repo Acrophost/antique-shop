@@ -99,25 +99,33 @@ const Contact: FunctionComponent<RefProps> = (props: RefProps) => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="fa fa-facebook"
-                            />
+                            >
+                                <span className="contact__social-text">Facebook</span>
+                            </a>
                             <a
                                 href="https://twitter.com/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="fa fa-twitter"
-                            />
+                            >
+                                <span className="contact__social-text">Twitter</span>
+                            </a>
                             <a
                                 href="http://instagram.com/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="fa fa-instagram"
-                            />
+                            >
+                                <span className="contact__social-text">Instagram</span>
+                            </a>
                             <a
                                 href="https://www.pinterest.com/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="fa fa-pinterest"
-                            />
+                            >
+                                <span className="contact__social-text">Pinterest</span>
+                            </a>
                         </div>
                     </div>
                 </div>
