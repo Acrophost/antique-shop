@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/antique-shop/static/css/main.0bae2dd9.chunk.css",
+    "main.js": "/antique-shop/static/js/main.ab70ec41.chunk.js",
+    "main.js.map": "/antique-shop/static/js/main.ab70ec41.chunk.js.map",
+    "runtime-main.js": "/antique-shop/static/js/runtime-main.b4869a2a.js",
+    "runtime-main.js.map": "/antique-shop/static/js/runtime-main.b4869a2a.js.map",
+    "static/js/2.b3fb48fa.chunk.js": "/antique-shop/static/js/2.b3fb48fa.chunk.js",
+    "static/js/2.b3fb48fa.chunk.js.map": "/antique-shop/static/js/2.b3fb48fa.chunk.js.map",
+    "index.html": "/antique-shop/index.html",
+    "precache-manifest.04b6e209d2e56e4957d6df03d07b4bb2.js": "/antique-shop/precache-manifest.04b6e209d2e56e4957d6df03d07b4bb2.js",
+    "service-worker.js": "/antique-shop/service-worker.js",
+    "static/css/main.0bae2dd9.chunk.css.map": "/antique-shop/static/css/main.0bae2dd9.chunk.css.map",
+    "static/js/2.b3fb48fa.chunk.js.LICENSE.txt": "/antique-shop/static/js/2.b3fb48fa.chunk.js.LICENSE.txt",
+    "static/media/a1.jfif": "/antique-shop/static/media/a1.6ad5977a.jfif",
+    "static/media/a2.jfif": "/antique-shop/static/media/a2.103f8579.jfif",
+    "static/media/a3.jfif": "/antique-shop/static/media/a3.440de8c8.jfif",
+    "static/media/a5.jfif": "/antique-shop/static/media/a5.e0d6ad97.jfif",
+    "static/media/a9.jfif": "/antique-shop/static/media/a9.beb63575.jfif",
+    "static/media/App.scss": "/antique-shop/static/media/sale-bg.e21e05ed.jfif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b4869a2a.js",
+    "static/js/2.b3fb48fa.chunk.js",
+    "static/css/main.0bae2dd9.chunk.css",
+    "static/js/main.ab70ec41.chunk.js"
+  ]
+}
